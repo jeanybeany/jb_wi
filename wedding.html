@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <!-- 모바일 native 느낌 적용 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>결혼식 안내</title>
+  <link rel="stylesheet" href="css/style.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang&display=swap" rel="stylesheet">
+</head>
+<body class="gowun-batang-regular">
+
+  <section id="details">
+    <h2>결혼식 안내</h2>
+
+    <ul>
+      <li>날짜: 2025년 6월 14일</li>
+      <li>시간: 오후 1시</li>
+      <li>장소: 연세대학교 신촌캠퍼스 동문회관</li>
+      <li>주소: 서울특별시 서대문구 연세로 50-1</li>
+    </ul>
+  </section>
+  <section id="story">
+    <h2>우리의 이야기</h2>
+    <p>두 사람이 만나 함께 걸어온 이야기를 소개합니다.</p>
+  </section>
+
+  <section id="calendarSection">
+    <h2>예식 일시</h2>
+    <p></p>
+    <h3>2025년 6월</h2>
+
+    <div id="weddingCalendar"></div>
+
+    <div id="weddingdDayCounter"></div>
+  </section>
+  <section id="rsvp">
+    <h2>RSVP</h2>
+    <p>참석 여부를 아래 양식을 통해 알려주세요.</p>
+    <p>참석 여부가 변경되셨다면 다시 제출해주세요.</p>
+    <form id="rsvpForm">
+      <label for="name">이름:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="attending">참석 여부:</label>
+      <select id="attending" name="attending">
+        <option value="yes">참석</option>
+        <option value="no">불참</option>
+      </select>
+      <button type="submit" class="btn">제출</button>
+
+    </form>
+  </section>
+  <footer>
+    <a href="index.html" class="back-btn">처음으로</a>
+  </footer>
+  <script src="js/main.js"></script>
+</body>
+</html>

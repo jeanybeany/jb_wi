@@ -1,0 +1,292 @@
+/* 기본 초기화 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  /* 모바일 native 느낌: 시스템 폰트 적용 및 중앙 정렬 */
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    background-color: #fff;
+    color: #333;
+    -webkit-tap-highlight-color: transparent;
+    text-align: center;
+  }
+
+  /* --- cover 페이지 스타일 --- */
+  #cover {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: url('../images/background.jpg') no-repeat center center/cover;
+    position: relative;
+  }
+
+  .cover-content {
+    text-align: center;
+    background: rgba(255,255,255,0.9);
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 400px;
+    transform: translateY(150px);
+  }
+
+  .cover-content h1 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+
+  .cover-content p {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
+
+  /* 버튼 그룹: 중앙 정렬 */
+  .button-group a.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+    background-color: #036236;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .button-group a.btn:hover {
+    background-color: #036236;
+  }
+
+  /* RSVP와 동일한 버튼 스타일 */
+  a.btn,
+  button.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+    background-color: #036236;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .btn:hover {
+    background-color: #036236;
+  }
+
+  /* page1, page2 기본 레이아웃 */
+  header, section, footer {
+    padding: 15px;
+    text-align: center;
+  }
+
+  header {
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #ddd;
+    padding: 20px 0;
+  }
+
+  header h1 {
+    font-size: 1.8rem;
+  }
+
+  section {
+    margin-bottom: 20px;
+  }
+
+  section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+
+  section p, section li {
+    font-size: 1rem;
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  /* RSVP 폼 스타일 */
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  form label {
+    margin-bottom: 5px;
+    font-size: 1rem;
+  }
+
+  form input, form select {
+    padding: 10px;
+    margin-bottom: 15px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 300px;
+    text-align: center;
+  }
+
+  form button {
+    padding: 10px;
+    font-size: 1rem;
+    background-color: #036236;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 300px;
+  }
+
+  form button:hover {
+    background-color: #036236;
+  }
+
+  /* Footer 스타일 */
+  footer {
+    background-color: #f8f8f8;
+    border-top: 1px solid #ddd;
+    padding: 15px;
+  }
+
+  .back-btn {
+    display: inline-block;
+    padding: 10px;
+    text-decoration: none;
+    background-color: #036236;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+
+  .back-btn:hover {
+    background-color: #036236;
+  }
+
+
+  #weddingCalendar {
+    margin: 0 auto;
+    max-width: 400px;
+  }
+
+  #weddingCalendar table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+  }
+
+  #weddingCalendar th,
+  #weddingCalendar td {
+    border: none;
+    padding: 10px;
+    text-align: center;
+  }
+
+  #weddingCalendar th {
+    background-color: transparent;
+    color: #036236;
+    font-weight: bold;
+  }
+
+  /* 예식일(8일)을 강조하는 스타일 */
+  #weddingCalendar td.highlight {
+    background-color: #036236;
+    color: #fff;
+    border-radius: 50%;
+    width: 2.5em;   /* 원의 크기는 필요에 따라 조절 */
+    height: 2.5em;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+
+  #receptionCalendar {
+    margin: 0 auto;
+    max-width: 400px;
+  }
+
+  #receptionCalendar table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+  }
+
+  #receptionCalendar th,
+  #receptionCalendar td {
+    border: none;
+    padding: 10px;
+    text-align: center;
+  }
+
+  #receptionCalendar th {
+    background-color: transparent;
+    color: #036236;
+    font-weight: bold;
+  }
+
+  /* 예식일(8일)을 강조하는 스타일 */
+  #receptionCalendar td.highlight {
+    background-color: #036236;
+    color: #fff;
+    border-radius: 50%;
+    width: 2.5em;   /* 원의 크기는 필요에 따라 조절 */
+    height: 2.5em;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  /* D-day 카운터 스타일 */
+  #dDayCounter {
+    margin-top: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+
+  /* 반응형 (모바일 우선) */
+  @media (min-width: 768px) {
+    .cover-content h1 {
+      font-size: 2.5rem;
+    }
+    .cover-content p {
+      font-size: 1.4rem;
+    }
+    .btn {
+      font-size: 1.2rem;
+    }
+  }
+
+  .gowun-batang-regular {
+    font-family: "Gowun Batang", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  /* 각 section 사이에 구분선을 추가 (첫 번째 section 제외) */
+  /* 옵션 조절:
+    - border-top-width: 선의 굵기 (예: 2px)
+    - border-top-style: 선 스타일 (예: solid, dashed, dotted 등)
+    - border-top-color: 선 색상 (예: #ccc)
+    - margin-top, padding-top: 선 위/아래 간격 조절 */
+  section + section {
+    border-top: 0.5px double #036236;  /* 2px 굵기, dashed 스타일, #ccc 색상 */
+    margin-top: 20px;              /* 위쪽 간격 */
+    padding-top: 20px;             /* 선과 내용 사이의 간격 */
+  }
