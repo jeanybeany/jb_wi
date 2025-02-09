@@ -30,6 +30,95 @@ document.addEventListener("DOMContentLoaded", function() {
     setInterval(() => updatereceptionDDayCounter(receptionDate), 1000);
   }
 
+  // 드롭다운 토글 기능
+  const dropdownLabels = document.querySelectorAll('.common-dropdown-label-groom, .common-dropdown-label-bride');
+
+  dropdownLabels.forEach(label => {
+    label.addEventListener('click', function() {
+      // 레이블 open 클래스 토글
+      label.classList.toggle('open');
+      // 바로 다음 형제 요소(내용)를 찾아 open 클래스 토글
+      const content = label.nextElementSibling;
+      if (content) {
+        slideToggle(content, 300); // 1초 동안 토글 애니메이션
+      }
+    });
+  });
+  // 계좌번호 복사 기능: 버튼에 클래스 .bank-copy 등으로 구분할 수도 있음
+  const copyButtons = document.querySelectorAll('button.bank-copy');
+  copyButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      // 버튼이 속한 gift-info-content 영역을 찾습니다.
+      const giftInfo = button.closest('.gift-info-content');
+      if (!giftInfo) return;
+      // 그 영역 내에서 계좌번호가 있는 요소(.bank p.account)를 찾습니다.
+      const accountElem = giftInfo.querySelector('.bank p.account');
+      if (!accountElem) return;
+      const accountText = accountElem.textContent.trim();
+      // 클립보드에 복사
+      navigator.clipboard.writeText(accountText)
+        .then(() => {
+          alert("계좌번호가 복사되었습니다: " + accountText);
+        })
+        .catch(err => {
+          console.error("복사 실패:", err);
+          alert("복사에 실패했습니다.");
+        });
+    });
+  });
+
+  const galleryItems = document.querySelectorAll(".gallery-item");
+  const galleryArray = Array.from(galleryItems);
+
+  const modal = document.getElementById("myModal");
+  const modalImg = document.getElementById("modalImage");
+  const closeBtn = document.getElementsByClassName("close")[0];
+  const arrowLeft = document.querySelector(".arrow-left");
+  const arrowRight = document.querySelector(".arrow-right");
+
+  let currentIndex = 0;
+
+  // 각 갤러리 이미지 클릭 시 모달 열기
+  galleryArray.forEach((item, index) => {
+    item.addEventListener("click", function() {
+      modal.style.display = "block";
+      modalImg.src = this.src;
+      currentIndex = index;
+      updateArrows();
+    });
+  });
+
+  // 왼쪽 화살표 클릭: 이전 이미지로 이동
+  arrowLeft.addEventListener("click", function(e) {
+    e.stopPropagation(); // 모달 닫힘 방지
+    if (currentIndex > 0) {
+      currentIndex--;
+      modalImg.src = galleryArray[currentIndex].src;
+      updateArrows();
+    }
+  });
+
+  // 오른쪽 화살표 클릭: 다음 이미지로 이동
+  arrowRight.addEventListener("click", function(e) {
+    e.stopPropagation();
+    if (currentIndex < galleryArray.length - 1) {
+      currentIndex++;
+      modalImg.src = galleryArray[currentIndex].src;
+      updateArrows();
+    }
+  });
+
+  // 닫기 버튼 클릭 시 모달 닫기
+  closeBtn.addEventListener("click", function() {
+    modal.style.display = "none";
+  });
+
+  // 모달 외부 클릭 시 모달 닫기
+  modal.addEventListener("click", function(e) {
+    if (e.target === modal) {
+      modal.style.display = "none";
+    }
+  });
   /**
    * getweddingCalendarDataset(date)
    * ─ 지정한 날짜의 달(월)을 기준으로 한 주 단위(일요일부터 시작)의 달력 데이터를 생성
@@ -155,4 +244,69 @@ document.addEventListener("DOMContentLoaded", function() {
       counterElem.textContent = counterText;
     }
   }
+
+  function slideToggle(element, duration = 1000) {
+    // 현재 요소의 display 스타일을 확인하여 닫힘 여부 판단
+    const computedStyle = window.getComputedStyle(element);
+    const isHidden = computedStyle.display === 'none';
+
+    if (isHidden) {
+      // 슬라이드 다운: 요소를 보이게 하고 높이를 0에서 목표 높이까지 늘림
+      element.style.display = 'block';
+      element.style.overflow = 'hidden';
+      element.style.height = '0px';
+      const targetHeight = element.scrollHeight;
+      let startTime = null;
+
+      function slideDown(timestamp) {
+        if (!startTime) startTime = timestamp;
+        const elapsed = timestamp - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        element.style.height = (targetHeight * progress) + 'px';
+        if (progress < 1) {
+          requestAnimationFrame(slideDown);
+        } else {
+          // 애니메이션 종료 후 원래 높이로 복원(자동 높이)
+          element.style.height = null;
+          element.style.overflow = null;
+        }
+      }
+      requestAnimationFrame(slideDown);
+    } else {
+      // 슬라이드 업: 요소의 현재 높이에서 0으로 줄임
+      element.style.overflow = 'hidden';
+      const currentHeight = element.scrollHeight;
+      let startTime = null;
+
+      function slideUp(timestamp) {
+        if (!startTime) startTime = timestamp;
+        const elapsed = timestamp - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        element.style.height = (currentHeight * (1 - progress)) + 'px';
+        if (progress < 1) {
+          requestAnimationFrame(slideUp);
+        } else {
+          element.style.display = 'none';
+          element.style.height = null;
+          element.style.overflow = null;
+        }
+      }
+      requestAnimationFrame(slideUp);
+    }
+  }
+
+  // 화살표 버튼 표시 업데이트 (첫 이미지면 왼쪽 숨김, 마지막 이미지면 오른쪽 숨김)
+  function updateArrows() {
+    if (currentIndex === 0) {
+      arrowLeft.style.display = "none";
+    } else {
+      arrowLeft.style.display = "block";
+    }
+    if (currentIndex === galleryArray.length - 1) {
+      arrowRight.style.display = "none";
+    } else {
+      arrowRight.style.display = "block";
+    }
+  }
+
 });

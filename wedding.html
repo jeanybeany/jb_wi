@@ -11,40 +11,214 @@
   <link rel="stylesheet" href="css/style.css">
 
   <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=170dec6c2308f6152a2c0cbb6d1a4023"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+
 </head>
 <body class="gowun-batang-regular">
+  <section id="gallery-test">
+    <h1 style="text-align: center;">갤러리</h1>
 
-  <section id="details">
-    <h2>결혼식 안내</h2>
+    <!-- 3열 그리드 갤러리 -->
+    <div class="gallery">
+      <!-- 예시 이미지들 (원하는 이미지 URL로 교체하세요) -->
+      <img src="images/bankcopy.png" alt="Photo 1" class="gallery-item">
+      <img src="images/bankcopy.png" alt="Photo 2" class="gallery-item">
+      <img src="images/bankcopy.png" alt="Photo 3" class="gallery-item">
+      <img src="images/bankcopy.png" alt="Photo 4" class="gallery-item">
+      <img src="images/bankcopy.png" alt="Photo 5" class="gallery-item">
+      <img src="images/bankcopy.png" alt="Photo 6" class="gallery-item">
+      <!-- 추가 이미지들 -->
+    </div>
 
+    <!-- 모달 팝업 (클릭 시 큰 화면으로 보여줄 이미지) -->
+    <!-- 모달 팝업 -->
+    <div id="myModal" class="modal">
+      <span class="close">&times;</span>
+      <button class="gallery-arrow arrow-left">&#10094;</button>
+      <img class="modal-content" id="modalImage">
+      <button class="gallery-arrow arrow-right">&#10095;</button>
+    </div>
+  </section>
+  <section id="header-section">
+    <div class="header-image">
+      <div class="header-overlay">
+        <h1>결혼식에 초대합니다.</h1>
+      </div>
+    </div>
+  </section>
+  <section id="details" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+    <h2>이소정 | 김영빈</h2>
     <ul>
-      <li>날짜: 2025년 6월 14일</li>
-      <li>시간: 오후 1시</li>
+      <li>2025년 6월 14일 토요일 낮 1시</li>
       <li>장소: 연세대학교 신촌캠퍼스 동문회관</li>
       <li>주소: 서울특별시 서대문구 연세로 50-1</li>
     </ul>
   </section>
-  <section id="story">
+  <section id="story" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+    <div class="section-divider">
+      <span class="divider-title">인사말</span>
+    </div>
     <h2>우리의 이야기</h2>
     <p>두 사람이 만나 함께 걸어온 이야기를 소개합니다.</p>
   </section>
 
-  <section id="calendarSection">
-    <h2>예식 일시</h2>
-    <p></p>
-    <h3>2025년 6월</h2>
+  <section id="calendarSection" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+    <div class="section-divider">
+      <span class="divider-title">예식 일시</span>
+    </div>
+    <h5>2025년 6월 14일</h5>
+    <h5>토요일 낮 1시</h5>
+    <br>
+    <h3> 2025.06 </h3>
 
     <div id="weddingCalendar"></div>
-
+    <br>
     <div id="weddingdDayCounter"></div>
   </section>
-  <section id="rsvp">
+  <section id="directions" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+    <h2>오시는 길 안내</h2>
+    <div id="daumRoughmapContainer1738996456083" class="root_daum_roughmap root_daum_roughmap_landing"></div>
+    <script charset="UTF-8" class="daum_roughmap_loader_script" src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
+    <script charset="UTF-8">
+      new daum.roughmap.Lander({
+        "timestamp" : "1738996456083",
+        "key" : "2myou",
+        "mapWidth" : "375",
+        "mapHeight" : "225"
+      }).render();
+    </script>
+  </section>
+
+  <!-- 신랑측 계좌번호 -->
+<section id="account-info-groom">
+  <div class="common-dropdown-wrapper-groom">
+    <div class="common-dropdown-label-groom">
+      신랑측 계좌번호 확인하기 <span class="arrow">∨</span>
+    </div>
+    <div class="common-dropdown-content-groom groom">
+      <!-- 내부 내용 그대로 -->
+      <div class="gift-info-content">
+        <div class="owner-info">
+          <div class="owner">
+            <p class="name">신랑 김영빈</p>
+          </div>
+          <div class="bank">
+            <p class="account">국민 123123123</p>
+          </div>
+        </div>
+        <div class="account-info">
+          <button class="bank-copy">
+            <img src="images/bankcopy.png" alt="계좌번호복사" class="bank-copy-img">
+          </button>
+          <button class="kakao" onclick="window.location.href='https://qr.kakaopay.com/Ej8HIIVp3';">
+            <img src="images/kakaopay.png" alt="송금" class="kakao-img">
+          </button>
+        </div>
+      </div>
+      <div class="gift-info-content">
+        <div class="owner-info">
+          <div class="owner">
+            <p class="name">아버지 김진태</p>
+          </div>
+          <div class="bank">
+            <p class="account">국민 456456456</p>
+          </div>
+        </div>
+        <div class="account-info">
+          <button class="bank-copy">
+            <img src="images/bankcopy.png" alt="계좌번호복사" class="bank-copy-img">
+          </button>
+        </div>
+      </div>
+      <div class="gift-info-content">
+        <div class="owner-info">
+          <div class="owner">
+            <p class="name">어머니 김경란</p>
+          </div>
+          <div class="bank">
+            <p class="account">국민 789789789</p>
+          </div>
+        </div>
+        <div class="account-info">
+          <button class="bank-copy">
+            <img src="images/bankcopy.png" alt="계좌번호복사" class="bank-copy-img">
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 신부측 계좌번호 -->
+<section id="account-info-bride">
+  <div class="common-dropdown-wrapper-bride">
+    <div class="common-dropdown-label-bride">
+      신부측 계좌번호 확인하기 <span class="arrow">∨</span>
+    </div>
+    <div class="common-dropdown-content-bride bride">
+      <!-- 내부 내용 그대로 -->
+      <div class="gift-info-content">
+        <div class="owner-info">
+          <div class="owner">
+            <p class="name">신부</p>
+          </div>
+          <div class="bank">
+            <p class="account">우리 123123123</p>
+          </div>
+        </div>
+        <div class="account-info">
+          <button class="bank-copy">
+            <img src="images/bankcopy.png" alt="계좌번호복사" class="bank-copy-img">
+          </button>
+          <button class="kakao" onclick="window.location.href='https://qr.kakaopay.com/Ej8BqndUi';">
+            <img src="images/kakaopay.png" alt="송금" class="kakao-img">
+          </button>
+        </div>
+      </div>
+      <div class="gift-info-content">
+        <div class="owner-info">
+          <div class="owner">
+            <p class="name">아버지 이상희</p>
+          </div>
+          <div class="bank">
+            <p class="account">우리 456456456</p>
+          </div>
+        </div>
+        <div class="account-info">
+          <button class="bank-copy">
+            <img src="images/bankcopy.png" alt="계좌번호복사" class="bank-copy-img">
+          </button>
+        </div>
+      </div>
+      <div class="gift-info-content">
+        <div class="owner-info">
+          <div class="owner">
+            <p class="name">어머니 정현주</p>
+          </div>
+          <div class="bank">
+            <p class="account">우리 789789789</p>
+          </div>
+        </div>
+        <div class="account-info">
+          <button class="bank-copy">
+            <img src="images/bankcopy.png" alt="계좌번호복사" class="bank-copy-img">
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <!-- <section id="rsvp">
     <h2>RSVP</h2>
     <p>참석 여부를 아래 양식을 통해 알려주세요.</p>
     <p>참석 여부가 변경되셨다면 다시 제출해주세요.</p>
+    <p>동명이인 구분을 위해 소속도 남겨주시면 감사하겠습니다.</p>
     <form id="rsvpForm">
       <label for="name">이름:</label>
       <input type="text" id="name" name="name" required>
@@ -56,10 +230,20 @@
       <button type="submit" class="btn">제출</button>
 
     </form>
-  </section>
+  </section> -->
   <footer>
     <a href="index.html" class="back-btn">처음으로</a>
   </footer>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      // 옵션 (원하는 대로 조절 가능)
+      duration: 800, // 애니메이션 지속 시간 (ms)
+      once: true     // 스크롤 시 한 번만 애니메이션 실행
+    });
+  </script>
   <script src="js/main.js"></script>
 </body>
 </html>
+
+<!--카카오톡공유하기 https://help.campaignus.me/ko/articles/613f84fb-->
