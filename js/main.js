@@ -1,4 +1,81 @@
-document.addEventListener("DOMContentLoaded", function() {
+const slider = document.querySelector('.slider');
+const slides = document.querySelectorAll('.slide');
+const prevBtn = document.querySelector('.prev');
+const nextBtn = document.querySelector('.next');
+const dots = document.querySelectorAll('.dot');
+const sliderContainer = document.querySelector('.slider-container');
+
+let currentIndex = 0; // Tracks the current slide index
+let autoSlideInterval; // Will hold the interval ID for auto-sliding
+
+// Function to update the active dot indicator
+function updateDots() {
+    dots.forEach((dot, index) => {
+        if (index === currentIndex) {
+            dot.classList.add('active');
+        } else {
+            dot.classList.remove('active');
+        }
+    });
+}
+
+// Function to display a specific slide based on the index
+function showSlides(index) {
+    if (index >= slides.length) {
+        currentIndex = 0; // Reset to first slide if at the end
+    } else if (index < 0) {
+        currentIndex = slides.length - 1; // Go to last slide if at the beginning
+    } else {
+        currentIndex = index; // Otherwise, set to the provided index
+    }
+    slider.style.transform = `translateX(-${currentIndex * 100}%)`; // Slide transition
+    updateDots(); // Update the dots to reflect the current slide
+}
+
+// Function to move to the next slide
+function nextSlide() {
+    showSlides(currentIndex + 1);
+}
+
+// Function to move to the previous slide
+function prevSlide() {
+    showSlides(currentIndex - 1);
+}
+
+// Start the automatic sliding of images
+function startAutoSlide() {
+    autoSlideInterval = setInterval(nextSlide, 10000); // Slide every 4 seconds
+}
+
+// Stop the automatic sliding
+function stopAutoSlide() {
+    clearInterval(autoSlideInterval); // Clear the interval
+}
+
+// Add click event listeners to dots for direct slide navigation
+dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+        stopAutoSlide(); // Stop auto-slide when manually selecting a slide
+        showSlides(parseInt(dot.dataset.index)); // Show the selected slide
+        startAutoSlide(); // Restart auto-slide
+    });
+});
+
+// Add event listeners for navigation buttons
+nextBtn.addEventListener('click', nextSlide);
+prevBtn.addEventListener('click', prevSlide);
+
+// Stop auto-slide when the mouse enters the slider container
+sliderContainer.addEventListener('mouseover', stopAutoSlide);
+
+// Restart auto-slide when the mouse leaves the slider container
+sliderContainer.addEventListener('mouseout', startAutoSlide);
+
+// Start auto-slide when the page loads
+startAutoSlide();
+updateDots(); // Initialize the dots
+
+document.addEventListener("DOMContentLoaded", function () {
   // 예식일시 설정 (wedding.html의 내용에 맞춤: 2025년 6월 14일 오후 1시)
   const weddingDate = dayjs("2025-06-14T13:00:00");
   const receptionDate = dayjs("2025-05-31T13:00:00");
@@ -67,58 +144,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   });
 
-  const galleryItems = document.querySelectorAll(".gallery-item");
-  const galleryArray = Array.from(galleryItems);
 
-  const modal = document.getElementById("myModal");
-  const modalImg = document.getElementById("modalImage");
-  const closeBtn = document.getElementsByClassName("close")[0];
-  const arrowLeft = document.querySelector(".arrow-left");
-  const arrowRight = document.querySelector(".arrow-right");
-
-  let currentIndex = 0;
-
-  // 각 갤러리 이미지 클릭 시 모달 열기
-  galleryArray.forEach((item, index) => {
-    item.addEventListener("click", function() {
-      modal.style.display = "block";
-      modalImg.src = this.src;
-      currentIndex = index;
-      updateArrows();
-    });
-  });
-
-  // 왼쪽 화살표 클릭: 이전 이미지로 이동
-  arrowLeft.addEventListener("click", function(e) {
-    e.stopPropagation(); // 모달 닫힘 방지
-    if (currentIndex > 0) {
-      currentIndex--;
-      modalImg.src = galleryArray[currentIndex].src;
-      updateArrows();
-    }
-  });
-
-  // 오른쪽 화살표 클릭: 다음 이미지로 이동
-  arrowRight.addEventListener("click", function(e) {
-    e.stopPropagation();
-    if (currentIndex < galleryArray.length - 1) {
-      currentIndex++;
-      modalImg.src = galleryArray[currentIndex].src;
-      updateArrows();
-    }
-  });
-
-  // 닫기 버튼 클릭 시 모달 닫기
-  closeBtn.addEventListener("click", function() {
-    modal.style.display = "none";
-  });
-
-  // 모달 외부 클릭 시 모달 닫기
-  modal.addEventListener("click", function(e) {
-    if (e.target === modal) {
-      modal.style.display = "none";
-    }
-  });
   /**
    * getweddingCalendarDataset(date)
    * ─ 지정한 날짜의 달(월)을 기준으로 한 주 단위(일요일부터 시작)의 달력 데이터를 생성

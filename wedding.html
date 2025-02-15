@@ -16,44 +16,20 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
-
 </head>
 <body class="gowun-batang-regular">
-  <section id="gallery-test">
-    <h1 style="text-align: center;">갤러리</h1>
-
-    <!-- 3열 그리드 갤러리 -->
-    <div class="gallery">
-      <!-- 예시 이미지들 (원하는 이미지 URL로 교체하세요) -->
-      <img src="images/bankcopy.png" alt="Photo 1" class="gallery-item">
-      <img src="images/bankcopy.png" alt="Photo 2" class="gallery-item">
-      <img src="images/bankcopy.png" alt="Photo 3" class="gallery-item">
-      <img src="images/bankcopy.png" alt="Photo 4" class="gallery-item">
-      <img src="images/bankcopy.png" alt="Photo 5" class="gallery-item">
-      <img src="images/bankcopy.png" alt="Photo 6" class="gallery-item">
-      <!-- 추가 이미지들 -->
-    </div>
-
-    <!-- 모달 팝업 (클릭 시 큰 화면으로 보여줄 이미지) -->
-    <!-- 모달 팝업 -->
-    <div id="myModal" class="modal">
-      <span class="close">&times;</span>
-      <button class="gallery-arrow arrow-left">&#10094;</button>
-      <img class="modal-content" id="modalImage">
-      <button class="gallery-arrow arrow-right">&#10095;</button>
-    </div>
-  </section>
   <section id="header-section">
     <div class="header-image">
       <div class="header-overlay">
-        <h1>결혼식에 초대합니다.</h1>
+        <h1>결혼식에</h1>
+        <h1>초대합니다</h1>
       </div>
     </div>
   </section>
   <section id="details" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
     <h2>이소정 | 김영빈</h2>
     <ul>
-      <li>2025년 6월 14일 토요일 낮 1시</li>
+      <li>2025년 6월 14일 토요일 오후 1시</li>
       <li>장소: 연세대학교 신촌캠퍼스 동문회관</li>
       <li>주소: 서울특별시 서대문구 연세로 50-1</li>
     </ul>
@@ -71,7 +47,7 @@
       <span class="divider-title">예식 일시</span>
     </div>
     <h5>2025년 6월 14일</h5>
-    <h5>토요일 낮 1시</h5>
+    <h5>토요일 오후 1시</h5>
     <br>
     <h3> 2025.06 </h3>
 
@@ -92,126 +68,140 @@
       }).render();
     </script>
   </section>
+  <section id="gallery">
+    <h1 style="text-align: center;">갤러리</h1>
+    <div class="gallery-container">
+      <div class="slider-container">
+          <div class="slider">
+              <div class="slide"><img src="https://images.unsplash.com/photo-1725120344808-420e96dd8fdf?q=80&w=2026&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Image 1"></div>
+              <div class="slide"><img src="https://images.unsplash.com/photo-1724931282671-2d3bcd6de8f2?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Image 2"></div>
+              <div class="slide"><img src="https://images.unsplash.com/photo-1724875299388-7257f4af1cf9?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Image 3"></div>
+              <div class="slide"><img src="https://images.unsplash.com/photo-1724770646663-2a806ed04ca4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Image 4"></div>
+              <div class="slide"><img src="https://images.unsplash.com/photo-1723675510074-6e9f59fd3af0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Image 5"></div>
+              <div class="slide"><img src="https://images.unsplash.com/photo-1724690416953-c787bc34b56f?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Image 6"></div>
+          </div>
+          <button class="prev">&#10094;</button>
+          <button class="next">&#10095;</button>
+      </div>
+  </div>
 
+  </section>
   <!-- 신랑측 계좌번호 -->
-<section id="account-info-groom">
-  <div class="common-dropdown-wrapper-groom">
-    <div class="common-dropdown-label-groom">
-      신랑측 계좌번호 확인하기 <span class="arrow">∨</span>
+  <section id="account-info-groom">
+    <div class="common-dropdown-wrapper-groom">
+      <div class="common-dropdown-label-groom">
+        신랑측 계좌번호 확인하기 <span class="arrow">∨</span>
+      </div>
+      <div class="common-dropdown-content-groom groom">
+        <!-- 내부 내용 그대로 -->
+        <div class="gift-info-content">
+          <div class="owner-info">
+            <div class="owner">
+              <p class="name">신랑 김영빈</p>
+            </div>
+            <div class="bank">
+              <p class="account">국민 123123123</p>
+            </div>
+          </div>
+          <div class="account-info">
+            <button class="bank-copy">
+              <img src="images/bankcopy.png" alt="계좌번호복사" class="bank-copy-img">
+            </button>
+            <button class="kakao" onclick="window.location.href='https://qr.kakaopay.com/Ej8HIIVp3';">
+              <img src="images/kakaopay.png" alt="송금" class="kakao-img">
+            </button>
+          </div>
+        </div>
+        <div class="gift-info-content">
+          <div class="owner-info">
+            <div class="owner">
+              <p class="name">아버지 김진태</p>
+            </div>
+            <div class="bank">
+              <p class="account">국민 456456456</p>
+            </div>
+          </div>
+          <div class="account-info">
+            <button class="bank-copy">
+              <img src="images/bankcopy.png" alt="계좌번호복사" class="bank-copy-img">
+            </button>
+          </div>
+        </div>
+        <div class="gift-info-content">
+          <div class="owner-info">
+            <div class="owner">
+              <p class="name">어머니 김경란</p>
+            </div>
+            <div class="bank">
+              <p class="account">국민 789789789</p>
+            </div>
+          </div>
+          <div class="account-info">
+            <button class="bank-copy">
+              <img src="images/bankcopy.png" alt="계좌번호복사" class="bank-copy-img">
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="common-dropdown-content-groom groom">
-      <!-- 내부 내용 그대로 -->
-      <div class="gift-info-content">
-        <div class="owner-info">
-          <div class="owner">
-            <p class="name">신랑 김영빈</p>
-          </div>
-          <div class="bank">
-            <p class="account">국민 123123123</p>
-          </div>
-        </div>
-        <div class="account-info">
-          <button class="bank-copy">
-            <img src="images/bankcopy.png" alt="계좌번호복사" class="bank-copy-img">
-          </button>
-          <button class="kakao" onclick="window.location.href='https://qr.kakaopay.com/Ej8HIIVp3';">
-            <img src="images/kakaopay.png" alt="송금" class="kakao-img">
-          </button>
-        </div>
-      </div>
-      <div class="gift-info-content">
-        <div class="owner-info">
-          <div class="owner">
-            <p class="name">아버지 김진태</p>
-          </div>
-          <div class="bank">
-            <p class="account">국민 456456456</p>
-          </div>
-        </div>
-        <div class="account-info">
-          <button class="bank-copy">
-            <img src="images/bankcopy.png" alt="계좌번호복사" class="bank-copy-img">
-          </button>
-        </div>
-      </div>
-      <div class="gift-info-content">
-        <div class="owner-info">
-          <div class="owner">
-            <p class="name">어머니 김경란</p>
-          </div>
-          <div class="bank">
-            <p class="account">국민 789789789</p>
-          </div>
-        </div>
-        <div class="account-info">
-          <button class="bank-copy">
-            <img src="images/bankcopy.png" alt="계좌번호복사" class="bank-copy-img">
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- 신부측 계좌번호 -->
-<section id="account-info-bride">
-  <div class="common-dropdown-wrapper-bride">
-    <div class="common-dropdown-label-bride">
-      신부측 계좌번호 확인하기 <span class="arrow">∨</span>
+    <div class="common-dropdown-wrapper-bride">
+      <div class="common-dropdown-label-bride">
+        신부측 계좌번호 확인하기 <span class="arrow">∨</span>
+      </div>
+      <div class="common-dropdown-content-bride bride">
+        <!-- 내부 내용 그대로 -->
+        <div class="gift-info-content">
+          <div class="owner-info">
+            <div class="owner">
+              <p class="name">신부</p>
+            </div>
+            <div class="bank">
+              <p class="account">우리 123123123</p>
+            </div>
+          </div>
+          <div class="account-info">
+            <button class="bank-copy">
+              <img src="images/bankcopy.png" alt="계좌번호복사" class="bank-copy-img">
+            </button>
+            <button class="kakao" onclick="window.location.href='https://qr.kakaopay.com/Ej8BqndUi';">
+              <img src="images/kakaopay.png" alt="송금" class="kakao-img">
+            </button>
+          </div>
+        </div>
+        <div class="gift-info-content">
+          <div class="owner-info">
+            <div class="owner">
+              <p class="name">아버지 이상희</p>
+            </div>
+            <div class="bank">
+              <p class="account">우리 456456456</p>
+            </div>
+          </div>
+          <div class="account-info">
+            <button class="bank-copy">
+              <img src="images/bankcopy.png" alt="계좌번호복사" class="bank-copy-img">
+            </button>
+          </div>
+        </div>
+        <div class="gift-info-content">
+          <div class="owner-info">
+            <div class="owner">
+              <p class="name">어머니 정현주</p>
+            </div>
+            <div class="bank">
+              <p class="account">우리 789789789</p>
+            </div>
+          </div>
+          <div class="account-info">
+            <button class="bank-copy">
+              <img src="images/bankcopy.png" alt="계좌번호복사" class="bank-copy-img">
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="common-dropdown-content-bride bride">
-      <!-- 내부 내용 그대로 -->
-      <div class="gift-info-content">
-        <div class="owner-info">
-          <div class="owner">
-            <p class="name">신부</p>
-          </div>
-          <div class="bank">
-            <p class="account">우리 123123123</p>
-          </div>
-        </div>
-        <div class="account-info">
-          <button class="bank-copy">
-            <img src="images/bankcopy.png" alt="계좌번호복사" class="bank-copy-img">
-          </button>
-          <button class="kakao" onclick="window.location.href='https://qr.kakaopay.com/Ej8BqndUi';">
-            <img src="images/kakaopay.png" alt="송금" class="kakao-img">
-          </button>
-        </div>
-      </div>
-      <div class="gift-info-content">
-        <div class="owner-info">
-          <div class="owner">
-            <p class="name">아버지 이상희</p>
-          </div>
-          <div class="bank">
-            <p class="account">우리 456456456</p>
-          </div>
-        </div>
-        <div class="account-info">
-          <button class="bank-copy">
-            <img src="images/bankcopy.png" alt="계좌번호복사" class="bank-copy-img">
-          </button>
-        </div>
-      </div>
-      <div class="gift-info-content">
-        <div class="owner-info">
-          <div class="owner">
-            <p class="name">어머니 정현주</p>
-          </div>
-          <div class="bank">
-            <p class="account">우리 789789789</p>
-          </div>
-        </div>
-        <div class="account-info">
-          <button class="bank-copy">
-            <img src="images/bankcopy.png" alt="계좌번호복사" class="bank-copy-img">
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
 
 
   <!-- <section id="rsvp">

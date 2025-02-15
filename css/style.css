@@ -17,21 +17,92 @@
   /* --- cover 페이지 스타일 --- */
   #cover {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
-    background: url('https://jeanybeany-wedding.s3.ap-northeast-2.amazonaws.com/headimage.png') no-repeat center center/cover;
+    min-height: 100vh;
+    width: 100%;
     position: relative;
+    background: url("https://jeanybeany-wedding.s3.ap-northeast-2.amazonaws.com/cover_image.jpg") no-repeat center center;
+    background-size: cover;
+    overflow: hidden;
+  }
+
+  .pic-ctn {
+    display: flex;
+    /* align-items: center;
+    justify-content: center;
+    position: absolute; */
+    width: 50px; /*크기변경*/
+    height: 30px; /*크기변경*/
+    overflow: hidden;
+    margin-bottom: 5px;
+  }
+
+  /* 슬라이드 이미지 스타일 */
+  .pic-ctn .pic {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    width: 60%;
+    height: 50%;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    animation: display 20s infinite;
+    /* overflow: hidden; */
+  }
+
+  @keyframes display {
+    0% {
+      transform: translate(-50%, -50%) translateX(100%);
+      opacity: 0;
+    }
+    10% {
+      transform: translate(-50%, -50%) translateX(0%);
+      opacity: 1;
+    }
+    20% {
+      transform: translate(-50%, -50%) translateX(0%);
+      opacity: 1;
+    }
+    30% {
+      transform: translate(-50%, -50%) translateX(-100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translate(-50%, -50%) translateX(-100%);
+      opacity: 0;
+    }
+  }
+
+  .pic-ctn .pic:nth-child(1) {
+    animation-delay: 0s;
+  }
+  .pic-ctn .pic:nth-child(2) {
+    animation-delay: 4s;
+  }
+  .pic-ctn .pic:nth-child(3) {
+    animation-delay: 8s;
+  }
+  .pic-ctn .pic:nth-child(4) {
+    animation-delay: 12s;
+  }
+  .pic-ctn .pic:nth-child(5) {
+    animation-delay: 16s;
   }
 
   .cover-content {
     text-align: center;
-    background: rgba(255,255,255,0.9);
+
     padding: 20px;
     border-radius: 8px;
     width: 90%;
     max-width: 400px;
-    transform: translateY(150px);
+    position: relative;
+    z-index: 1;
+    margin: 0 auto;
+    transform: translateY(75%);
   }
 
   .cover-content h1 {
@@ -46,13 +117,19 @@
     margin-bottom: 20px;
   }
 
+  .button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 7px; /* 버튼 사이 간격, 필요에 따라 조절 */
+  }
+
   /* 버튼 그룹: 중앙 정렬 */
   .button-group a.btn {
     display: inline-block;
     padding: 10px 20px;
     text-decoration: none;
-    background-color: #036236;
-    color: #fff;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #036236;
     border: none;
     border-radius: 5px;
     font-size: 1rem;
@@ -61,7 +138,8 @@
   }
 
   .button-group a.btn:hover {
-    background-color: #036236;
+    background-color: rgba(255, 255, 255, 0.2); /* 예시: 약간 밝은 투명색 */
+    /* background-color: #036236; */
   }
 
   /* RSVP와 동일한 버튼 스타일 */
@@ -410,7 +488,7 @@
   .gift-info-content {
     margin-bottom: 5px;
     border-bottom: 1px solid;        /* 각 항목 사이 구분선 (옵션: 두께, 스타일, 색상 변경 가능) */
-    padding-bottom: 10px;
+    padding-bottom: 5px;
   }
 
   .gift-info-content:last-child {
@@ -421,7 +499,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
   }
 
   .owner-info .owner p.name {
@@ -436,7 +514,7 @@
     display: flex;
     justify-content: center;  /* 수평 중앙 정렬 */
     align-items: center;      /* 수직 중앙 정렬 (필요 시) */
-    gap: 10px;                /* 버튼 사이 간격 (원하는 값으로 조절) */
+    gap: 5px;                /* 버튼 사이 간격 (원하는 값으로 조절) */
   }
 
   .account-info-groom, .account-info-bride button {
@@ -499,79 +577,86 @@
     display: block;
   }
 
-  /* 갤러리 그리드: 3열 */
-  .gallery {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 10px;
-    max-width: 1200px;
-    margin: 0 auto;
+  /* Container for the entire slider section including the title and slider itself */
+  .gallery-container {
+    width: 100%; /* Sets the width to fill the available space */
+    height: 100%; /* Sets the height to fill the available space */
+    position: relative; /* Allows for absolute positioning of child elements */
+    display: flex; /* Enables flexbox layout */
+    flex-direction: column; /* Aligns items in a column (vertical stack) */
+    justify-content: center; /* Centers content vertically */
+    align-items: center; /* Centers content horizontally */
   }
 
-  .gallery-item {
-    width: 100%;
-    cursor: pointer;
-    transition: transform 0.3s ease;
+  /* Styling for the title above the slider */
+  .slider-title {
+    font-size: 4rem; /* Large font size for the title */
+    margin-bottom: 20px; /* Space below the title */
+    font-weight: 600; /* Semi-bold font weight */
   }
 
-  .gallery-item:hover {
-    transform: scale(1.05);
+  /* Main container for the slider - this holds the images and navigation buttons */
+  .slider-container {
+    position: relative; /* Allows for absolute positioning of navigation buttons */
+    width: 100%; /* Sets the slider width to 60% of the parent container */
+    max-width: 800px; /* Maximum width for larger screens */
+    overflow: hidden; /* Hides the overflow content (only one image is visible at a time) */
+    border-radius: 10px; /* Rounds the corners of the slider */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for depth */
   }
 
-  /* 모달(팝업) 스타일 */
-  .modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.8);
+  /* Flexbox container that holds all the slides */
+  .slider {
+    display: flex; /* Enables flexbox layout to line up slides horizontally */
+    transition: transform 0.4s ease-in-out; /* Smooth transition when sliding between images */
   }
 
-  .modal-content {
-    margin: 5% auto;
-    display: block;
-    max-width: 90%;
-    max-height: 80%;
+  /* Each individual slide - takes up full width of the container */
+  .slide {
+    min-width: 100%; /* Each slide takes up 100% of the slider container's width */
+    height: 250px; /* Fixed height for each slide */
+    transition: transform 0.5s ease-in-out; /* Smooth transition when slides are changed */
   }
 
-  .close {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    color: #fff;
-    font-size: 40px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: color 0.3s ease;
+  /* Ensures that images fill the slide area while maintaining aspect ratio */
+  .slide img {
+    width: 100%; /* Image width matches the slide width */
+    height: 100%; /* Image height matches the slide height */
+    object-fit: contain; /* Images are scaled to cover the entire slide, cropping if necessary */
+    border-radius: 10px; /* Rounds the corners of the images to match the slider */
   }
 
-  .close:hover,
-  .close:focus {
-    color: #bbb;
+  /* Common styling for both previous and next navigation buttons */
+  .prev, .next {
+    position: absolute; /* Absolute positioning within the slider container */
+    top: 50%; /* Centers the button vertically */
+    transform: translateY(-50%); /* Offsets the button position by half its height */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+    color: white; /* White color for the arrow icons */
+    border: none; /* Removes default button borders */
+    width: 40px; /* Fixed width for the buttons */
+    height: 40px; /* Fixed height for the buttons */
+    cursor: pointer; /* Changes the cursor to pointer on hover */
+    z-index: 10; /* Ensures buttons appear above the slider content */
+    border-radius: 50%; /* Makes the buttons round */
+    transition: background-color 0.3s ease; /* Smooth transition for background color on hover */
+    display: flex; /* Enables flexbox for centering the arrow inside the button */
+    justify-content: center; /* Centers arrow horizontally */
+    align-items: center; /* Centers arrow vertically */
+    padding: 0; /* Removes any default padding */
   }
 
-  /* 화살표 버튼 스타일 */
-  .gallery-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.5);
-    color: #fff;
-    border: none;
-    font-size: 2rem;
-    padding: 10px;
-    cursor: pointer;
-    z-index: 1100;
+  /* Positioning the previous button to the left */
+  .prev {
+    left: 10px; /* Positions the button 10px from the left edge */
   }
 
-  .gallery-arrow-left {
-    left: 10px;
+  /* Positioning the next button to the right */
+  .next {
+    right: 10px; /* Positions the button 10px from the right edge */
   }
 
-  .gallery-arrow-right {
-    right: 10px;
+  /* Hover effect for navigation buttons */
+  .prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8); /* Darkens the button background on hover */
   }
