@@ -5,6 +5,18 @@
     box-sizing: border-box;
   }
 
+  .gowun-batang-regular {
+    font-family: "Gowun Batang", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  .gowun-dodum-regular {
+    font-family: "Gowun Dodum", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
   /* 모바일 native 느낌: 시스템 폰트 적용 및 중앙 정렬 */
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
@@ -12,6 +24,22 @@
     color: #333;
     -webkit-tap-highlight-color: transparent;
     text-align: center;
+  }
+  .music-toggle-btn {
+    background-color: #f9f9f9;  /* 원하는 배경색 */
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  .music-toggle-btn img {
+    width: 100%;  /* 버튼 크기에 맞게 조절 */
+    height: auto;
+    object-fit: contain;
   }
   /* 헤더 내 목차 토글 버튼 */
   .toc-toggle-btn {
@@ -87,6 +115,7 @@
 
   /* --- cover 페이지 스타일 --- */
   #cover {
+    max-width: 800px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -94,7 +123,7 @@
     min-height: 100vh;
     width: 100%;
     position: relative;
-    background: url("https://jeanybeany-wedding.s3.ap-northeast-2.amazonaws.com/cover_image.jpg") no-repeat center center;
+    background: url("../images/cover_image.jpg") no-repeat center center;
     background-size: cover;
     overflow: hidden;
   }
@@ -362,7 +391,7 @@
   .header-image {
     width: 100%;
     height: 100%;
-    background: url("https://jeanybeany-wedding.s3.ap-northeast-2.amazonaws.com/headimage.png") no-repeat center center;
+    background: url("../images/front_image.jpg") no-repeat center center;
     background-size: cover;
   }
 
@@ -394,9 +423,12 @@
 
   /* 배경 이미지 설정 */
   .footer-image {
+    align-items: center;
+    justify-content: center;
+    max-width: 800px;
     width: 100%;
     height: 100%;
-    background: url("https://jeanybeany-wedding.s3.ap-northeast-2.amazonaws.com/headimage.png") no-repeat center center;
+    background: url("../images/footer_image.jpg") no-repeat center center;
     background-size: cover;
   }
 
@@ -517,11 +549,13 @@
     }
   }
 
-  .gowun-batang-regular {
-    font-family: "Gowun Batang", serif;
-    font-weight: 400;
-    font-style: normal;
+  #directions {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
   }
+
+
 
   /* 구분선 스타일 */
   .section-divider {
@@ -532,11 +566,12 @@
 
   /* 구분선 왼쪽 상단에 제목 텍스트 배치 */
   .divider-title {
+    align-items: center;
     position: absolute;
-    top: -20px;                   /* 구분선 위로 살짝 올림 (원하는 값으로 조절) */
+    top: -40px;                   /* 구분선 위로 살짝 올림 (원하는 값으로 조절) */
     left: 5px;                   /* 구분선 좌측 여백 (원하는 값으로 조절) */
     background: #fff;             /* 배경색 (구분선과 겹치지 않게) */
-    font-size: 0.7rem;              /* 폰트 크기 조절 */
+    font-size: 1.5rem;              /* 폰트 크기 조절 */
     color: #333;                  /* 텍스트 색상 */
   }
 
@@ -547,7 +582,7 @@
     border-radius: 5px;                    /* 모서리 둥글게 */
     margin: 10px auto 1px auto;
     margin-bottom: 1px;
-    max-width: 400px;                      /* 최대 너비 */
+    max-width: 800px;                      /* 최대 너비 */
     align-items: center; /* Centers content horizontally */
     justify-content: center;
     text-align: center;
@@ -561,7 +596,7 @@
     border-radius: 5px;                    /* 모서리 둥글게 */
     margin: 10px auto 1px auto;
     margin-bottom: 1px;
-    max-width: 400px;                      /* 최대 너비 */
+    max-width: 800px;                      /* 최대 너비 */
     align-items: center; /* Centers content horizontally */
     justify-content: center;
     text-align: center;
@@ -700,15 +735,33 @@
   /* Daum Roughmap 컨테이너를 반응형으로 만들고 가운데 정렬 */
   #daumRoughmapContainer1738996456083 {
     width: 100% !important;       /* 부모 너비의 100% 사용 */
-    max-width: 375px;             /* 최대 너비 375px (원본 설정값) */
+    max-width: 800px;             /* 최대 너비 375px (원본 설정값) */
     height: auto !important;      /* 높이는 내부 콘텐츠에 따라 자동 조절 */
     margin: 0 auto;               /* 좌우 가운데 정렬 */
     overflow: hidden;             /* 혹시 내부 요소가 넘치면 숨김 처리 */
-    position: relative;
+    position: block;
   }
 
   /* 만약 내부에 iframe 등이 생성된다면 그 요소에도 반응형 스타일 적용 */
   #daumRoughmapContainer1738996456083 iframe {
+    width: 100% !important;
+    height: auto !important;
+    display: block;
+  }
+
+
+  /* Daum Roughmap 컨테이너를 반응형으로 만들고 가운데 정렬 */
+  #daumRoughmapContainer1739623493005 {
+    width: 100% !important;       /* 부모 너비의 100% 사용 */
+    max-width: 800px;             /* 최대 너비 375px (원본 설정값) */
+    height: auto !important;      /* 높이는 내부 콘텐츠에 따라 자동 조절 */
+    margin: 0 auto;               /* 좌우 가운데 정렬 */
+    overflow: hidden;             /* 혹시 내부 요소가 넘치면 숨김 처리 */
+    position: block;
+  }
+
+  /* 만약 내부에 iframe 등이 생성된다면 그 요소에도 반응형 스타일 적용 */
+  #daumRoughmapContainer1739623493005 iframe {
     width: 100% !important;
     height: auto !important;
     display: block;
@@ -838,7 +891,7 @@
 
 
   /* 섹션 전체 스타일 (배경색, 여백 등 필요에 따라 조절) */
-  .section3 {
+  .introduction {
     padding: 40px 20px;
     background-color: #fff;
   }
@@ -898,20 +951,6 @@
     color: #333;
   }
 
-  /* 전화 아이콘: 링크 스타일 */
-  .name_list .icon a {
-    color: #036236;
-    font-size: 1.5rem;
-    text-decoration: none;
-  }
-
-  /* 소개 컨테이너: 간단한 소개글 (필요 시 내용 추가) */
-  .introduce_con {
-    font-size: 1rem;
-    color: #666;
-    justify-content: center;
-  }
-
   /* 관계 컨테이너: 부모 및 관계 정보 */
   .relation_con {
     justify-content: space-around;
@@ -933,15 +972,240 @@
     margin-bottom: 5px;
   }
 
-  /* 혼주에게 연락하기 버튼 */
-  .modal_contact_btn {
-    display: block;
+  /* 섹션 전체 스타일 (필요에 따라 배경색 등 수정) */
+  .section-gallery {
+    padding: 40px 20px;
+    background-color: #fff;
+  }
+
+  /* 내부 컨테이너: 최대 너비, 중앙 정렬 */
+  .inner {
+    max-width: 1200px;         /* 변경 가능: 최대 너비 */
+    margin: 0 auto;
+  }
+
+  /* 타이틀 스타일 */
+  .gallery-title h2 {
+    font-size: 2rem;           /* 변경 가능: 폰트 크기 */
     text-align: center;
-    background-color: #f08080;  /* 버튼 배경색 */
-    color: #fff;                /* 버튼 글자색 */
+    margin-bottom: 20px;
+  }
+
+  /* 갤러리 랩: 사진 영역 */
+  .gallery_wrap {
+    display: block;
+  }
+
+  /* 포토 박스: 3열 격자 (필요에 따라 열 수 조정 가능) */
+  .photo_box {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3열 */
+    gap: 10px;                         /* 사진 사이 간격 (변경 가능) */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 10px;
+  }
+
+  .photo_box li:nth-child(n+10) {
+    display: none;
+  }
+
+  /* 각 사진 리스트 항목 */
+  .photo_list {
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 5px;                /* 모서리 둥글게 (필요에 따라) */
+  }
+
+  /* 이미지 스타일: 지정한 높이(예: 200px)로 고정하고, 중앙 기준 크롭 */
+  .photo_list img {
+    width: 100%;
+    height: 200px;                    /* 변경 가능: 사진 고정 높이 */
+    object-fit: cover;                /* 이미지 비율 유지, 중앙 크롭 */
+    display: block;
+  }
+
+  .more-photos {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+  }
+
+  /* 추가 사진이 보이는 상태에 대한 클래스 (JavaScript로 직접 max-height 조정할 수도 있음) */
+  .more-photos.open {
+    /* 충분히 큰 값으로 지정하여 내부 내용이 모두 보이도록 (예: 1000px) */
+    max-height: 1000px;
+  }
+
+  /* 더보기 버튼 컨테이너 */
+  .more_btn_box {
+    text-align: center;
+    margin-top: 20px;                 /* 상단 간격 (변경 가능) */
+  }
+
+  /* 더보기 버튼 스타일 */
+  #btnMoreGallery {
+    background-color: #f08080;        /* 버튼 배경색 (변경 가능) */
+    color: #fff;                      /* 글자색 */
+    border: none;
     padding: 10px 20px;
+    font-size: 1rem;
     border-radius: 5px;
-    text-decoration: none;
-    margin: 20px auto 0;
-    max-width: 300px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  #btnMoreGallery:hover {
+    background-color: #e06666;
+  }
+
+  /* 탭 헤더 컨테이너 */
+  .noti-tab-container {
+    max-width: 800px;               /* 변경 가능: 최대 너비 */
+    margin: 20px auto;
+    padding: 0 10px;
+  }
+
+  /* 탭 버튼들: 한 줄 텍스트만 배치 */
+  .noti-tabs {
+    display: flex;
+    justify-content: space-around;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #383737;
+    cursor: pointer;
+  }
+
+  .noti-tab {
+    flex: 1;
+    text-align: center;
+    padding: 10px 0;
+  }
+
+  .noti-tab.active {
+    color: #dd4241; /* 활성 탭 텍스트 붉은색 */
+  }
+
+  .noti-tab-indicator {
+    position: relative;
+    height: 4px; /* 실선 두께 */
+    background-color: #d0d2d5; /* 회색 실선 */
+    margin-top: 5px;
+  }
+
+  .noti-indicator {
+    position: absolute;
+    height: 100%;
+    width: 33.33%; /* 각 탭 1/3 */
+    background-color: #036236; /* 붉은색 인디케이터 */
+    left: 0;
+    transition: left 0.4s ease;
+  }
+
+  /* 콘텐츠 영역 */
+  .noti-tab-content-container {
+    max-width: 800px;
+    margin: 20px auto;
+    position: relative;
+    /* 터치 스와이프를 위해 overflow hidden */
+    overflow: hidden;
+  }
+
+  /* 각 탭 콘텐츠: 기본 숨김, active일 때 fade-in */
+  .noti-tab-content {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+
+  .noti-tab-content.active {
+    display: block;
+    opacity: 1;
+  }
+
+  /* 이미지 스타일 (반응형) */
+  .noti-tab-content img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-top: 10px;
+  }
+
+  .red-text {
+    color: red;
+  }
+
+  .green-text {
+    color: #036236;
+  }
+
+  .blue-text {
+    color: blue;
+  }
+  /* 하단 내비 버튼 컨테이너 - 화면 하단에 고정 */
+  .navi-box {
+    text-align: center;
+    position: relative;
+    width: 100%;
+    background-color: #ffffff; /* 필요에 따라 배경색 수정 */
+    padding: 10px 0;
+    z-index: 1000;
+    margin-top: 10px;
+  }
+
+  /* 내비 버튼 그룹: 가로로 균등 배치 */
+  .navi {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+  }
+
+  /* 개별 내비 버튼 스타일 (텍스트만 없게 하고, 아이콘과 텍스트가 세로로 배치됨) */
+  .map_btn {
+    max-width: 267px;
+    width: 100%;
+    height: 36px;
+    display: flex;
+    flex-direction: row;           /* 가로 배치 */
+    align-items: center;            /* 세로 중앙 정렬 */
+    justify-content: center;
+    gap: 5px;                       /* 이미지와 텍스트 사이 간격, 조정 가능 */
+    background-color: #fff;      /* 버튼 배경색 (필요시 변경) */
+    border: none;
+    border-radius: 5px;
+    color: #036236;
+    padding: 10px 20px;
+    font-size: 0.6rem;
+    cursor: pointer;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+  }
+
+  /* 이미지 박스: 버튼 내 아이콘 크기 (아래 값은 변경 가능) */
+  .map_btn .navi_img_box {
+    width: 15px;                    /* 원하는 크기로 조정 */
+    height: 15px;                   /* 원하는 크기로 조정 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* 아이콘 이미지: 컨테이너 크기에 맞춤 */
+  .map_btn .navi_img_box img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  /* 필요시 버튼 hover 효과 */
+  .map_btn:hover {
+    opacity: 0.8;
+  }
+
+  .roadmap-guideline-box {
+    margin-top: 20px;
+    font-size: 0.95rem;
+    color: #383737;
   }

@@ -1,119 +1,68 @@
-if (typeof AOS !== 'undefined') {
-  AOS.init();
+function toggleGallery() {
+  var morePhotos = document.getElementById("morePhotos");
+  var btn = document.getElementById("btnMoreGallery");
+
+  // 현재 max-height가 0이면 (숨겨진 상태)
+  if (!morePhotos.classList.contains("open")) {
+    // open 클래스를 추가하여 슬라이드 다운 효과 적용
+    morePhotos.classList.add("open");
+    btn.textContent = "감추기";
+  } else {
+    // open 클래스를 제거하여 슬라이드 업 효과 적용
+    morePhotos.classList.remove("open");
+    btn.textContent = "더보기";
+  }
 }
 
-// common 모듈: 모달 열기/닫기 기능 제공
-var common = (function() {
-  return {
-    openStaticModal: function(modalId) {
-      var modal = document.getElementById(modalId);
-      if (modal) {
-        modal.style.display = 'block';
-      }
-    },
-    closeStaticModal: function(modalId) {
-      var modal = document.getElementById(modalId);
-      if (modal) {
-        modal.style.display = 'none';
-      }
-    }
-  };
-})();
-const slider = document.querySelector('.slider');
-const slides = document.querySelectorAll('.slide');
-const prevBtn = document.querySelector('.prev');
-const nextBtn = document.querySelector('.next');
-const dots = document.querySelectorAll('.dot');
-const sliderContainer = document.querySelector('.slider-container');
-
-let currentIndex = 0; // Tracks the current slide index
-let autoSlideInterval; // Will hold the interval ID for auto-sliding
-
-// Function to update the active dot indicator
-function updateDots() {
-    dots.forEach((dot, index) => {
-        if (index === currentIndex) {
-            dot.classList.add('active');
-        } else {
-            dot.classList.remove('active');
-        }
-    });
-}
-
-// Function to display a specific slide based on the index
-function showSlides(index) {
-    if (index >= slides.length) {
-        currentIndex = 0; // Reset to first slide if at the end
-    } else if (index < 0) {
-        currentIndex = slides.length - 1; // Go to last slide if at the beginning
-    } else {
-        currentIndex = index; // Otherwise, set to the provided index
-    }
-    slider.style.transform = `translateX(-${currentIndex * 100}%)`; // Slide transition
-    updateDots(); // Update the dots to reflect the current slide
-}
-
-// Function to move to the next slide
-function nextSlide() {
-    showSlides(currentIndex + 1);
-}
-
-// Function to move to the previous slide
-function prevSlide() {
-    showSlides(currentIndex - 1);
-}
-
-// Start the automatic sliding of images
-function startAutoSlide() {
-    autoSlideInterval = setInterval(nextSlide, 10000); // Slide every 4 seconds
-}
-
-// Stop the automatic sliding
-function stopAutoSlide() {
-    clearInterval(autoSlideInterval); // Clear the interval
-}
-
-// Add click event listeners to dots for direct slide navigation
-dots.forEach(dot => {
-    dot.addEventListener('click', () => {
-        stopAutoSlide(); // Stop auto-slide when manually selecting a slide
-        showSlides(parseInt(dot.dataset.index)); // Show the selected slide
-        startAutoSlide(); // Restart auto-slide
-    });
-});
-
-// Add event listeners for navigation buttons
-nextBtn.addEventListener('click', nextSlide);
-prevBtn.addEventListener('click', prevSlide);
-
-// Stop auto-slide when the mouse enters the slider container
-sliderContainer.addEventListener('mouseover', stopAutoSlide);
-
-// Restart auto-slide when the mouse leaves the slider container
-sliderContainer.addEventListener('mouseout', startAutoSlide);
-
-// Start auto-slide when the page loads
-startAutoSlide();
-updateDots(); // Initialize the dots
 
 document.addEventListener("DOMContentLoaded", function () {
-  // 모든 모달 요소에 대해
-  var modals = document.querySelectorAll('.modal');
-  modals.forEach(function(modal) {
-    // 모달 배경 클릭 시 닫기
-    modal.addEventListener('click', function(e) {
-      if (e.target === modal) {
-        modal.style.display = 'none';
+
+  const notiTabs = document.querySelectorAll(".noti-tab");
+  const notiIndicator = document.querySelector(".noti-indicator");
+  const notiContents = document.querySelectorAll(".noti-tab-content");
+
+  // 각 탭 클릭 이벤트 처리
+  notiTabs.forEach(tab => {
+    tab.addEventListener("click", function() {
+      // 활성화 전 모든 탭과 콘텐츠에서 active 제거
+      notiTabs.forEach(t => t.classList.remove("active"));
+      notiContents.forEach(c => c.classList.remove("active"));
+
+      // 클릭한 탭에 active 추가
+      const index = parseInt(this.getAttribute("data-index"), 10);
+      this.classList.add("active");
+
+      // 해당 콘텐츠 표시
+      const activeContent = document.querySelector(`.noti-tab-content[data-index="${index}"]`);
+      if (activeContent) {
+        activeContent.classList.add("active");
       }
+
+      // 인디케이터 이동: 각 탭의 너비가 동일할 경우, left를 index * 33.33%로 설정
+      notiIndicator.style.left = (index * 33.33) + "%";
     });
-    // 모달 내부에 닫기 버튼(클래스 "modal-close")이 있다면 클릭 시 닫기
-    var closeBtn = modal.querySelector('.modal-close');
-    if (closeBtn) {
-      closeBtn.addEventListener('click', function() {
-        modal.style.display = 'none';
-      });
+  });
+  // 음악 재생/일시정지 버튼 동작
+  const musicToggleBtn = document.getElementById('musicToggleBtn');
+  const musicIcon = document.getElementById('musicIcon');
+  const bgMusic = document.getElementById('bgMusic');
+
+  musicToggleBtn.addEventListener('click', function() {
+    if (bgMusic.paused) {
+      bgMusic.play();
+      // 재생 상태: play 아이콘 대신 pause 아이콘으로 변경
+      musicIcon.src = './images/music_stop.png'
+      musicIcon.classList.remove('fa-play');
+      musicIcon.classList.add('fa-pause');
+    } else {
+      bgMusic.pause();
+      musicIcon.src = './images/music_start.png'
+
+      musicIcon.classList.remove('fa-pause');
+      musicIcon.classList.add('fa-play');
     }
   });
+
   const detailsSection = document.getElementById('details');
   const header = document.querySelector('header');
 
@@ -227,6 +176,42 @@ document.addEventListener("DOMContentLoaded", function () {
           alert("복사에 실패했습니다.");
         });
     });
+  });
+
+  // T맵 버튼 클릭 이벤트
+  document.getElementById("btnOpenTMap").addEventListener("click", function() {
+    // T맵 내비 URL (실제 URL로 수정)
+    window.open("tmap://route?rGoName=연세동문회관웨딩홀&rGoX=126.942441&rGoY=37.562772", "_blank");
+  });
+
+  // 카카오내비 버튼 클릭 이벤트
+  document.getElementById("btnOpenKakaoNavi").addEventListener("click", function() {
+    // 카카오내비 URL (실제 URL로 수정)
+    window.open("https://map.kakao.com/link/to/연세대학교동문회관예식장,37.562772,126.942441", "_blank");
+  });
+
+  // 네이버지도 버튼 클릭 이벤트
+  document.getElementById("btnOpenNaverMap").addEventListener("click", function() {
+    // 네이버 지도 URL (실제 URL로 수정)
+    window.open("nmap://route/car?dlat=37.562772&dlng=126.942441&dname=%EC%97%B0%EC%84%B8%EB%8F%99%EB%AC%B8%ED%9A%8C%EA%B4%80%EC%98%88%EC%8B%9D%EC%9E%A5", "_blank");
+  });
+
+  // T맵 버튼 클릭 이벤트
+  document.getElementById("btnOpenTMapReception").addEventListener("click", function() {
+    // T맵 내비 URL (실제 URL로 수정)
+    window.open("tmap://route?rGoName=에메랄드웨딩홀&rGoX=126.420667&rGoY=34.820348", "_blank");
+  });
+
+  // 카카오내비 버튼 클릭 이벤트
+  document.getElementById("btnOpenKakaoNaviReception").addEventListener("click", function() {
+    // 카카오내비 URL (실제 URL로 수정)
+    window.open("https://map.kakao.com/link/to/에메랄드웨딩홀,34.820348,126.420667", "_blank");
+  });
+
+  // 네이버지도 버튼 클릭 이벤트
+  document.getElementById("btnOpenNaverMapReception").addEventListener("click", function() {
+    // 네이버 지도 URL (실제 URL로 수정)
+    window.open("nmap://route/car?dlat=34.820348&dlng=126.420667&dname=%EC%97%90%EB%A9%94%EB%9E%84%EB%93%9C%EC%9B%A8%EB%94%A9%ED%99%80", "_blank");
   });
 
 
