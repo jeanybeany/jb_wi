@@ -1,3 +1,24 @@
+if (typeof AOS !== 'undefined') {
+  AOS.init();
+}
+
+// common 모듈: 모달 열기/닫기 기능 제공
+var common = (function() {
+  return {
+    openStaticModal: function(modalId) {
+      var modal = document.getElementById(modalId);
+      if (modal) {
+        modal.style.display = 'block';
+      }
+    },
+    closeStaticModal: function(modalId) {
+      var modal = document.getElementById(modalId);
+      if (modal) {
+        modal.style.display = 'none';
+      }
+    }
+  };
+})();
 const slider = document.querySelector('.slider');
 const slides = document.querySelectorAll('.slide');
 const prevBtn = document.querySelector('.prev');
@@ -76,6 +97,70 @@ startAutoSlide();
 updateDots(); // Initialize the dots
 
 document.addEventListener("DOMContentLoaded", function () {
+  // 모든 모달 요소에 대해
+  var modals = document.querySelectorAll('.modal');
+  modals.forEach(function(modal) {
+    // 모달 배경 클릭 시 닫기
+    modal.addEventListener('click', function(e) {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
+    // 모달 내부에 닫기 버튼(클래스 "modal-close")이 있다면 클릭 시 닫기
+    var closeBtn = modal.querySelector('.modal-close');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function() {
+        modal.style.display = 'none';
+      });
+    }
+  });
+  const detailsSection = document.getElementById('details');
+  const header = document.querySelector('header');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      // details 섹션이 화면에 거의 보이지 않을 때 (threshold 0.1 이하)
+      if (entry.intersectionRatio < 0.1) {
+        header.classList.add('visible');
+      } else {
+        header.classList.remove('visible');
+      }
+    });
+  }, { threshold: [0, 0.1] });
+
+  if(detailsSection) {
+    observer.observe(detailsSection);
+  }
+
+  const tocToggleBtn = document.getElementById("tocToggleBtn");
+  const tocSidebar = document.getElementById("tocSidebar");
+  const tocItems = document.querySelectorAll(".toc-item");
+
+  // 헤더 버튼 클릭 시 목차 탭 토글
+  tocToggleBtn.addEventListener("click", function() {
+    tocSidebar.classList.toggle("open");
+  });
+
+  // 목차 항목 클릭 시 목차 탭을 닫고 해당 섹션으로 이동
+  tocItems.forEach(item => {
+    item.addEventListener("click", function() {
+      // 탭을 닫음
+      tocSidebar.classList.remove("open");
+      // 기본 앵커 동작(해당 섹션으로 이동)은 그대로 유지
+    });
+  });
+
+  const tocCloseBtn = document.getElementById("tocCloseBtn");
+
+  tocCloseBtn.addEventListener("click", function() {
+    tocSidebar.classList.remove("open");
+  });
+
+  tocItems.forEach(item => {
+    item.addEventListener("click", function() {
+      tocSidebar.classList.remove("open");
+    });
+  });
   // 예식일시 설정 (wedding.html의 내용에 맞춤: 2025년 6월 14일 오후 1시)
   const weddingDate = dayjs("2025-06-14T13:00:00");
   const receptionDate = dayjs("2025-05-31T13:00:00");

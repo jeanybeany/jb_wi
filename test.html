@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <!-- 모바일 native 느낌 적용 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>결혼식 안내</title>
+  <link rel="stylesheet" href="css/style.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=170dec6c2308f6152a2c0cbb6d1a4023"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+</head>
+<header>
+  <button id="tocToggleBtn" class="toc-toggle-btn">
+    <img src="images/hamburger.png" alt="목차" class="toc-icon">
+  </button>
+  <a href="index.html" class="back-btn-up">처음으로</a>
+</header>
+<nav id="tocSidebar" class="toc-sidebar">
+  <h2>목차</h2>
+  <br>
+  <button id="tocCloseBtn" class="toc-close-btn">✕</button>
+  <ul>
+    <li><a href="#details" class="toc-item">결혼식 안내</a></li>
+    <li><a href="#story" class="toc-item">우리의 이야기</a></li>
+    <li><a href="#calendarSection" class="toc-item">예식 일시</a></li>
+    <li><a href="#directions" class="toc-item">오시는 길</a></li>
+    <li><a href="#gallery" class="toc-item">갤러리</a></li>
+    <li><a href="#account" class="toc-item">마음 전하실 곳</a></li>
+  </ul>
+</nav>
+<body class="gowun-batang-regular">
+  <!-- 커플 정보 섹션 (예시) -->
+<section class="section3 active aos-init aos-animate" data-aos="fade-up">
+    <div class="tel_wrap2">
+      <!-- 이미지 컨테이너: 신랑/신부 이미지 -->
+      <div class="img_con row_couple_name">
+        <div class="img_box">
+          <img src="https://cdn.salondeletter.com/202501/06/50492/f83db887.jpg" alt="신랑 이미지" var="groomImgId" style="display:block; object-position: 60% 35%;">
+        </div>
+        <div class="img_box">
+          <img src="https://cdn.salondeletter.com/202501/10/50492/1532704e.png" alt="신부 이미지" var="brideImgId" style="display:block; object-position: 50% 5%;">
+        </div>
+      </div>
+      <!-- 이름 및 연락처 컨테이너 -->
+      <div class="name_con row_couple_name">
+        <div class="name_list groom">
+          <div class="name_box">
+            신랑 <span class="name row_groom_name">
+              <span var="groomName">김영빈</span>
+            </span>
+          </div>
+        </div>
+        <div class="name_list bride">
+          <div class="name_box">
+            신부 <span class="name row_bride_name">
+              <span var="brideName">이소정</span>
+            </span>
+          </div>
+        </div>
+      </div>
+      <!-- 혼주와의 관계 정보 -->
+      <div class="relation_con row_couple_name">
+        <div class="relation_list groom">
+          <span class="parents">
+            <span var="groomDadName">父 김진태</span>
+            <span var="groomDot" style="display:inline-block">·</span>
+            <span var="groomMomName">母 김경란</span>
+          </span>
+          <span class="relation" style="display:inline-block">
+            <span>의</span>
+            <span var="groomRelationName">장남</span>
+          </span>
+        </div>
+        <div class="relation_list bride">
+          <span class="parents">
+            <span var="brideDadName">父 이상희</span>
+            <span var="brideDot" style="display:inline-block">·</span>
+            <span var="brideMomName">母 정현주</span>
+          </span>
+          <span class="relation" style="display:inline-block">
+            <span>의</span>
+            <span var="brideRelationName">장녀</span>
+          </span>
+        </div>
+      </div>
+      <!-- 혼주 연락 버튼 -->
+      <a class="modal_contact_btn modal_btn l_btn" href="javascript:;" onclick="common.openStaticModal('modal_contact')" style="display:inline-block" var="useContactParent">
+        혼주에게 연락하기
+      </a>
+    </div>
+  </section>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      // 옵션 (원하는 대로 조절 가능)
+      duration: 800, // 애니메이션 지속 시간 (ms)
+      once: true     // 스크롤 시 한 번만 애니메이션 실행
+    });
+  </script>
+  <script src="js/main.js"></script>
+</body>
+</html>
+
+<!--카카오톡공유하기 https://help.campaignus.me/ko/articles/613f84fb-->
