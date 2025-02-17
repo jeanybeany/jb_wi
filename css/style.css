@@ -763,128 +763,6 @@
     display: block;
   }
 
-  /* Container for the entire slider section including the title and slider itself */
-  .gallery-container {
-    width: 100%; /* Sets the width to fill the available space */
-    height: 100%; /* Sets the height to fill the available space */
-    position: relative; /* Allows for absolute positioning of child elements */
-    display: flex; /* Enables flexbox layout */
-    flex-direction: column; /* Aligns items in a column (vertical stack) */
-    justify-content: center; /* Centers content vertically */
-    align-items: center; /* Centers content horizontally */
-  }
-
-  /* Styling for the title above the slider */
-  .slider-title {
-    font-size: 4rem; /* Large font size for the title */
-    margin-bottom: 20px; /* Space below the title */
-    font-weight: 600; /* Semi-bold font weight */
-  }
-
-  /* Main container for the slider - this holds the images and navigation buttons */
-  .slider-container {
-    position: relative; /* Allows for absolute positioning of navigation buttons */
-    width: 100%; /* Sets the slider width to 60% of the parent container */
-    max-width: 600px; /* Maximum width for larger screens */
-    overflow: hidden; /* Hides the overflow content (only one image is visible at a time) */
-    border-radius: 10px; /* Rounds the corners of the slider */
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for depth */
-  }
-
-  /* Flexbox container that holds all the slides */
-  .slider {
-    display: flex; /* Enables flexbox layout to line up slides horizontally */
-    transition: transform 0.4s ease-in-out; /* Smooth transition when sliding between images */
-  }
-
-  /* Each individual slide - takes up full width of the container */
-  .slide {
-    min-width: 100%; /* Each slide takes up 100% of the slider container's width */
-    height: 250px; /* Fixed height for each slide */
-    transition: transform 0.5s ease-in-out; /* Smooth transition when slides are changed */
-  }
-
-  /* Ensures that images fill the slide area while maintaining aspect ratio */
-  .slide img {
-    width: 100%; /* Image width matches the slide width */
-    height: 100%; /* Image height matches the slide height */
-    object-fit: contain; /* Images are scaled to cover the entire slide, cropping if necessary */
-    border-radius: 10px; /* Rounds the corners of the images to match the slider */
-  }
-
-  /* Common styling for both previous and next navigation buttons */
-  .prev, .next {
-    position: absolute; /* Absolute positioning within the slider container */
-    top: 50%; /* Centers the button vertically */
-    transform: translateY(-50%); /* Offsets the button position by half its height */
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
-    color: white; /* White color for the arrow icons */
-    border: none; /* Removes default button borders */
-    width: 40px; /* Fixed width for the buttons */
-    height: 40px; /* Fixed height for the buttons */
-    cursor: pointer; /* Changes the cursor to pointer on hover */
-    z-index: 10; /* Ensures buttons appear above the slider content */
-    border-radius: 50%; /* Makes the buttons round */
-    transition: background-color 0.3s ease; /* Smooth transition for background color on hover */
-    display: flex; /* Enables flexbox for centering the arrow inside the button */
-    justify-content: center; /* Centers arrow horizontally */
-    align-items: center; /* Centers arrow vertically */
-    padding: 0; /* Removes any default padding */
-  }
-
-  /* Positioning the previous button to the left */
-  .prev {
-    left: 10px; /* Positions the button 10px from the left edge */
-  }
-
-  /* Positioning the next button to the right */
-  .next {
-    right: 10px; /* Positions the button 10px from the right edge */
-  }
-
-  /* Hover effect for navigation buttons */
-  .prev:hover, .next:hover {
-    background-color: rgba(0, 0, 0, 0.8); /* Darkens the button background on hover */
-  }
-
-  .gallery-container {
-    width: 70%;
-    margin: auto;
-    overflow: hidden;
-  }
-  .gallery-images {
-    width: 100%;
-    height: auto;
-  }
-  .gallery-images img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
-
-  @media (min-width: 640px) {
-    .gallery-container {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 30px;
-      grid-auto-flow: row dense;
-    }
-    .gallery-imageFlex1 {
-      display: grid;
-      row-gap: 20px;
-    }
-    .gallery-imageFlex2 {
-      display: grid;
-      row-gap: 20px;
-    }
-    .gallery-imageFlex3 {
-      display: grid;
-      row-gap: 20px;
-    }
-  }
-
-  /* 기본 리셋 */
-
 
   /* 섹션 전체 스타일 (배경색, 여백 등 필요에 따라 조절) */
   .introduction {
@@ -1031,7 +909,7 @@
   /* 추가 사진이 보이는 상태에 대한 클래스 (JavaScript로 직접 max-height 조정할 수도 있음) */
   .more-photos.open {
     /* 충분히 큰 값으로 지정하여 내부 내용이 모두 보이도록 (예: 1000px) */
-    max-height: 1000px;
+    max-height: 2000px;
   }
 
   /* 더보기 버튼 컨테이너 */
@@ -1054,6 +932,57 @@
 
   #btnMoreGallery:hover {
     background-color: #e06666;
+  }
+
+  /* Slider 팝업 스타일 */
+  .slider-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+    z-index: 1000;
+  }
+  .slider-popup.active {
+    opacity: 1;
+    visibility: visible;
+  }
+  .slider-popup img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 8px;
+  }
+  .nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #fff;
+    font-size: 2.5rem;
+    padding: 10px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .nav-btn.left {
+    left: 20px;
+  }
+  .nav-btn.right {
+    right: 20px;
+  }
+  .close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: #fff;
+    font-size: 2rem;
+    cursor: pointer;
+    user-select: none;
   }
 
   /* 탭 헤더 컨테이너 */

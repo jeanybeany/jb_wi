@@ -13,9 +13,48 @@ function toggleGallery() {
     btn.textContent = "더보기";
   }
 }
-
+// 갤러리 슬라이더를 위한 popup 객체
+var popup = {
+  currentIndex: 0,
+  galleryImages: [],
+  // DOM에서 모든 이미지 경로를 수집
+  init: function() {
+    var imgs = document.querySelectorAll('.photo_box img');
+    this.galleryImages = Array.from(imgs).map(function(img) {
+      return img.getAttribute('src');
+    });
+  },
+  // 슬라이더 열기
+  openSlider: function(index) {
+    this.currentIndex = index;
+    this.updateSlider();
+    document.getElementById('sliderPopup').classList.add('active');
+  },
+  // 슬라이더 닫기
+  closeSlider: function() {
+    document.getElementById('sliderPopup').classList.remove('active');
+  },
+  // 슬라이더 이미지 업데이트
+  updateSlider: function() {
+    document.getElementById('sliderImage').src = this.galleryImages[this.currentIndex];
+  },
+  // 오른쪽(다음) 이미지로 이동
+  nextSlider: function(event) {
+    event.stopPropagation(); // 부모 클릭 이벤트 전파 방지
+    this.currentIndex = (this.currentIndex + 1) % this.galleryImages.length;
+    this.updateSlider();
+  },
+  // 왼쪽(이전) 이미지로 이동
+  prevSlider: function(event) {
+    event.stopPropagation();
+    this.currentIndex = (this.currentIndex - 1 + this.galleryImages.length) % this.galleryImages.length;
+    this.updateSlider();
+  }
+};
 
 document.addEventListener("DOMContentLoaded", function () {
+
+  popup.init();
 
   const notiTabs = document.querySelectorAll(".noti-tab");
   const notiIndicator = document.querySelector(".noti-indicator");
