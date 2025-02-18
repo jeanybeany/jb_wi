@@ -17,6 +17,14 @@
     font-style: normal;
   }
 
+  img {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+  }
+
   html {
     scroll-behavior: smooth;
   }
@@ -905,11 +913,6 @@
     height: 100px;                    /* 변경 가능: 사진 고정 높이 */
     object-fit: cover;                /* 이미지 비율 유지, 중앙 크롭 */
     display: block;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    -webkit-touch-callout: none;
   }
 
   .more-photos {

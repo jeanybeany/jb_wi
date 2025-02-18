@@ -1,3 +1,20 @@
+document.addEventListener('contextmenu', function (e) {
+  if (e.target.tagName === 'IMG') {
+    e.preventDefault();
+  }
+
+  e.preventDefault();
+});
+
+document.querySelectorAll('img').forEach(img => {
+  img.addEventListener('dragstart', function(e) {
+    e.preventDefault();
+  });
+});
+
+document.addEventListener('dragstart', function(e) {
+  e.preventDefault();
+});
 function toggleGallery() {
   var morePhotos = document.getElementById("morePhotos");
   var btn = document.getElementById("btnMoreGallery");
