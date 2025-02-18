@@ -81,6 +81,31 @@ document.addEventListener("DOMContentLoaded", function () {
       notiIndicator.style.left = (index * 33.33) + "%";
     });
   });
+  const notiReceptionTabs = document.querySelectorAll(".noti-reception-tab");
+  const notiReceptionIndicator = document.querySelector(".noti-reception-indicator");
+  const notiReceptionContents = document.querySelectorAll(".noti-reception-tab-content");
+
+  // 각 탭 클릭 이벤트 처리
+  notiReceptionTabs.forEach(tab => {
+    tab.addEventListener("click", function() {
+      // 활성화 전 모든 탭과 콘텐츠에서 active 제거
+      notiReceptionTabs.forEach(t => t.classList.remove("active"));
+      notiReceptionContents.forEach(c => c.classList.remove("active"));
+
+      // 클릭한 탭에 active 추가
+      const Receptionindex = parseInt(this.getAttribute("data-index"), 10);
+      this.classList.add("active");
+
+      // 해당 콘텐츠 표시
+      const activeContent = document.querySelector(`.noti-reception-tab-content[data-index="${Receptionindex}"]`);
+      if (activeContent) {
+        activeContent.classList.add("active");
+      }
+
+      // 인디케이터 이동: 각 탭의 너비가 동일할 경우, left를 index * 33.33%로 설정
+      notiReceptionIndicator.style.left = (Receptionindex * 50) + "%";
+    });
+  });
   // 음악 재생/일시정지 버튼 동작
   const musicToggleBtn = document.getElementById('musicToggleBtn');
   const musicIcon = document.getElementById('musicIcon');
