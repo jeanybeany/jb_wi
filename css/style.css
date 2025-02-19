@@ -17,6 +17,26 @@
     font-style: normal;
   }
 
+  .nanum-brush-script-regular {
+    font-family: "Nanum Brush Script", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 65px;
+  }
+  .nanum-brush-script-small {
+    font-family: "Nanum Brush Script", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 30px;
+  }
+
+  p br {
+    display: block;
+    margin-bottom: 100px; /* 원하는 간격 (예: 8px) */
+  }
+
+
+
   img {
     -webkit-user-select: none;
     -webkit-user-drag: none;
@@ -412,7 +432,7 @@
     position: absolute;
     top: 80%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -150%);
     text-align: center;
     color: #fff;    /* 텍스트 색상 (필요시 조절) */
   }
@@ -461,6 +481,34 @@
     font-size: 1.2rem;
   }
 
+  .details_contents {
+    position: relative;
+    line-height: 1.8;
+    font-size: 15px;
+    padding: 12px 0px;
+    letter-spacing: -1px;
+  }
+
+  .details_contents::after, .details_contents::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-55%);
+    width: 60%;
+    height: 2px;
+    background-color: rgba(102, 102, 102, 0.5);
+    box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.1);
+  }
+  /* 텍스트 위에 있는 선 (간격을 늘리기 위해 top 값을 조정) */
+  .details_contents::before {
+    top: -5px; /* 위쪽 텍스트와의 간격을 20px로 설정 (값 조절 가능) */
+  }
+
+  /* 텍스트 아래에 있는 선 */
+  .details_contents::after {
+    bottom: -5px; /* 아래쪽 텍스트와의 간격을 20px로 설정 (값 조절 가능) */
+  }
+
   #weddingCalendar {
     margin: 0 auto;
     max-width: 400px;
@@ -487,7 +535,7 @@
 
   /* 예식일(8일)을 강조하는 스타일 */
   #weddingCalendar td.highlight {
-    background-color: #036236;
+    background-color: #FF3399;
     color: #fff;
     border-radius: 50%;
     width: 2.5em;   /* 원의 크기는 필요에 따라 조절 */
@@ -590,7 +638,7 @@
     border: 1px solid #ddd;              /* 드롭다운 외곽선 */
     border-radius: 5px;                    /* 모서리 둥글게 */
     margin: 10px auto 1px auto;
-    margin-bottom: 1px;
+    margin-bottom: 2px;
     max-width: 800px;                      /* 최대 너비 */
     align-items: center; /* Centers content horizontally */
     justify-content: center;
@@ -631,7 +679,7 @@
 
   .common-dropdown-label-groom {
     background-color: #e6f7f8;             /* 기본 배경색 */
-    padding: 5px 10px;                   /* 내부 여백 */
+    padding: 10px 10px;                   /* 내부 여백 */
     cursor: pointer;
     font-size: 1rem;
     user-select: none;
@@ -640,7 +688,7 @@
 
   .common-dropdown-label-bride {
     background-color: #fff0f1;             /* 기본 배경색 */
-    padding: 5px 10px;                    /* 내부 여백 */
+    padding: 10px 10px;                    /* 내부 여백 */
     cursor: pointer;
     font-size: 1rem;
     user-select: none;
@@ -649,13 +697,13 @@
 
   .common-dropdown-content-groom {
     display: none;                         /* 기본은 숨김 */
-    padding: 5px;                         /* 내용 여백 (옵션: padding-top 등으로 조절 가능) */
+    padding: 10px;                         /* 내용 여백 (옵션: padding-top 등으로 조절 가능) */
     background-color: #f2fbfb;
   }
 
   .common-dropdown-content-bride {
     display: none;                         /* 기본은 숨김 */
-    padding: 5px;                         /* 내용 여백 (옵션: padding-top 등으로 조절 가능) */
+    padding: 10px;                         /* 내용 여백 (옵션: padding-top 등으로 조절 가능) */
     background-color: #fff8f8;
   }
 
@@ -667,9 +715,9 @@
 
 
   .gift-info-content {
-    margin-bottom: 5px;
-    border-bottom: 1px solid;        /* 각 항목 사이 구분선 (옵션: 두께, 스타일, 색상 변경 가능) */
-    padding-bottom: 5px;
+    margin-bottom: 10px;
+
+    padding-bottom: 10px;
   }
 
   .gift-info-content:last-child {
@@ -680,7 +728,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
   }
 
   .owner-info .owner p.name {
@@ -697,12 +745,15 @@
 
   .account-info-groom, .account-info-bride {
     display: flex;
+    flex-direction: column;
     justify-content: center;  /* 수평 중앙 정렬 */
     align-items: center;      /* 수직 중앙 정렬 (필요 시) */
-    gap: 5px;                /* 버튼 사이 간격 (원하는 값으로 조절) */
+    gap: 50px;                /* 버튼 사이 간격 (원하는 값으로 조절) */
   }
 
   .account-info-groom, .account-info-bride button {
+    display: flex;
+    flex-direction: column;
     align-items: center;
     padding: 20px 20px;                   /* 버튼 내부 여백 */
     background-color: #fff;            /* 버튼 배경색 */
@@ -711,6 +762,7 @@
     font-size: 1.1rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    gap: 1000px;
   }
 
   button.bank-copy {
@@ -720,8 +772,8 @@
   }
 
   button.bank-copy .bank-copy-img {
-    max-width: 108px;   /* 최대 너비 72px */
-    max-height: 24px;  /* 최대 높이 16px */
+    max-width: 162px;   /* 최대 너비 72px */
+    max-height: 36px;  /* 최대 높이 16px */
     width: auto;
     height: auto;
     display: block;
@@ -737,8 +789,8 @@
 
   button.kakao .kakao-img {
     background-color: #ffcd00;
-    max-width: 108px;   /* 최대 너비 72px */
-    max-height: 24px;  /* 최대 높이 16px */
+    max-width: 162px;   /* 최대 너비 72px */
+    max-height: 36px;  /* 최대 높이 16px */
     width: auto;
     height: auto;
     display: block;
@@ -810,6 +862,7 @@
   /* 이미지 박스: 이미지가 잘리더라도 지정한 크기로 중앙 크롭됨 */
   .img_box {
     width: 45%;            /* 두 이미지가 한 행에 들어가도록 */
+    height: 150px;
     overflow: hidden;
     border-radius: 8px;     /* 필요에 따라 둥글게 */
   }
@@ -817,6 +870,7 @@
   /* 이미지 스타일: 박스 크기에 맞게 채움 */
   .img_box img {
     width: 100%;
+    height: 100%;
     height: auto;
     display: block;
     object-fit: cover;      /* 이미지 비율 유지하며 박스 채움, 크롭 발생 가능 */
@@ -937,7 +991,7 @@
 
   /* 더보기 버튼 스타일 */
   #btnMoreGallery {
-    background-color: #f08080;        /* 버튼 배경색 (변경 가능) */
+    background-color: #036236;        /* 버튼 배경색 (변경 가능) */
     color: #fff;                      /* 글자색 */
     border: none;
     padding: 10px 20px;
@@ -948,7 +1002,7 @@
   }
 
   #btnMoreGallery:hover {
-    background-color: #e06666;
+    background-color: #036236;
   }
 
   /* Slider 팝업 스타일 */
@@ -1026,7 +1080,7 @@
   }
 
   .noti-tab.active {
-    color: #dd4241; /* 활성 탭 텍스트 붉은색 */
+    color: #036236; /* 활성 탭 텍스트 붉은색 */
   }
 
   .noti-tab-indicator {
@@ -1059,6 +1113,7 @@
     display: none;
     opacity: 0;
     transition: opacity 0.5s ease;
+    line-height: 1.6;
   }
 
   .noti-tab-content.active {
