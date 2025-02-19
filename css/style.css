@@ -66,8 +66,9 @@
     height: 30px;
     border-radius: 5px;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: right;
+    justify-content: right;
+    transform: translateX(300%);
     cursor: pointer;
   }
   .music-toggle-btn img {
@@ -574,7 +575,7 @@
 
   /* 예식일(8일)을 강조하는 스타일 */
   #receptionCalendar td.highlight {
-    background-color: #036236;
+    background-color: #FF3399;
     color: #fff;
     border-radius: 50%;
     width: 2.5em;   /* 원의 크기는 필요에 따라 조절 */
@@ -772,8 +773,8 @@
   }
 
   button.bank-copy .bank-copy-img {
-    max-width: 162px;   /* 최대 너비 72px */
-    max-height: 36px;  /* 최대 높이 16px */
+    max-width: 140px;   /* 최대 너비 72px */
+    max-height: 30px;  /* 최대 높이 16px */
     width: auto;
     height: auto;
     display: block;
@@ -789,8 +790,8 @@
 
   button.kakao .kakao-img {
     background-color: #ffcd00;
-    max-width: 162px;   /* 최대 너비 72px */
-    max-height: 36px;  /* 최대 높이 16px */
+    max-width: 140px;   /* 최대 너비 72px */
+    max-height: 30px;  /* 최대 높이 16px */
     width: auto;
     height: auto;
     display: block;
