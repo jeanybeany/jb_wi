@@ -149,13 +149,13 @@
     width: 70px; /*크기변경*/
     height: 30px; /*크기변경*/
     overflow: hidden;
-    margin-bottom: 5px;
+
   }
 
   /* 슬라이드 이미지 스타일 */
   .pic-ctn .pic {
     position: absolute;
-    top: 30%;
+    top: 25%;
     left: 50%;
     width: 90%;
     height: 50%;
@@ -207,15 +207,14 @@
 
   .cover-content {
     text-align: center;
-
-    padding: 20px;
+    padding: 5px;
     border-radius: 8px;
     width: 90%;
     max-width: 400px;
     position: relative;
     z-index: 1;
     margin: 0 auto;
-    transform: translateY(75%);
+    transform: translateY(55%);
   }
 
   .cover-content h1 {
@@ -241,7 +240,7 @@
     display: inline-block;
     padding: 10px 20px;
     text-decoration: none;
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.7);
     color: #036236;
     border: none;
     border-radius: 5px;
@@ -373,10 +372,10 @@
     background-color: #f9f9f9;   /* 목차 버튼과 동일한 색상 */
     color: #036236;
     text-decoration: none;
-    width: 35px;                 /* 목차 버튼과 동일한 크기 */
-    height: 30px;
+    width: 75px;                 /* 목차 버튼과 동일한 크기 */
+    height: 35px;
     border-radius: 5px;
-    font-size: 0.5rem;           /* 필요에 따라 조절 */
+    font-size: 1rem;           /* 필요에 따라 조절 */
   }
 
   .back-btn {
