@@ -494,7 +494,7 @@
     content: "";
     position: absolute;
     left: 50%;
-    transform: translateX(-55%);
+    transform: translateX(-50%);
     width: 60%;
     height: 2px;
     background-color: rgba(102, 102, 102, 0.5);
@@ -853,6 +853,7 @@
     justify-content: center;
     align-items: center;
     margin-bottom: 20px;
+
   }
 
   /* 이미지 컨테이너: 두 이미지를 나란히 배치 */
@@ -863,7 +864,7 @@
   /* 이미지 박스: 이미지가 잘리더라도 지정한 크기로 중앙 크롭됨 */
   .img_box {
     width: 45%;            /* 두 이미지가 한 행에 들어가도록 */
-    height: 150px;
+    height: 350px;
     overflow: hidden;
     border-radius: 8px;     /* 필요에 따라 둥글게 */
   }
@@ -872,15 +873,17 @@
   .img_box img {
     width: 100%;
     height: 100%;
-    height: auto;
-    display: block;
+    /* height: auto; */
+    /* display: block; */
     object-fit: cover;      /* 이미지 비율 유지하며 박스 채움, 크롭 발생 가능 */
+    object-position: center;
   }
 
   /* 이름 컨테이너: 신랑, 신부 정보 중앙 정렬 */
   .name_con {
     justify-content: space-around;
     align-items: center;
+    text-align: center;
   }
 
   /* 이름 리스트: 세로 정렬 (이름과 연락처 아이콘) */
@@ -889,6 +892,7 @@
     flex-direction: column;
     align-items: center;
     gap: 5px;             /* 요소 사이 간격 */
+    width: 45%;
   }
 
   /* 이름 박스: 커플 이름 스타일 */
@@ -902,6 +906,7 @@
     justify-content: space-around;
     font-size: 0.9rem;
     color: #555;
+    text-align: center;
   }
 
   /* 각 관계 리스트: 세로 정렬 */
@@ -909,6 +914,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 45%;
   }
 
   /* 부모 정보 스타일 (작은 글씨, 색상 등) */
@@ -967,7 +973,7 @@
   /* 이미지 스타일: 지정한 높이(예: 200px)로 고정하고, 중앙 기준 크롭 */
   .photo_list img {
     width: 100%;
-    height: 100px;                    /* 변경 가능: 사진 고정 높이 */
+    height: 150px;                    /* 변경 가능: 사진 고정 높이 */
     object-fit: cover;                /* 이미지 비율 유지, 중앙 크롭 */
     display: block;
   }
@@ -1154,7 +1160,7 @@
   }
 
   .noti-reception-tab.active {
-    color: #dd4241; /* 활성 탭 텍스트 붉은색 */
+    color: #036236; /* 활성 탭 텍스트 붉은색 */
   }
 
   .noti-reception-tab-indicator {
