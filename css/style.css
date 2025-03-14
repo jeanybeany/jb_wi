@@ -17,17 +17,31 @@
     font-style: normal;
   }
 
+  .gowun-dodum-title {
+    font-family: "Gowun Batang", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 35px;
+  }
+
   .nanum-brush-script-regular {
     font-family: "Nanum Brush Script", serif;
     font-weight: 400;
     font-style: normal;
-    font-size: 65px;
+    font-size: 55px;
   }
   .nanum-brush-script-small {
     font-family: "Nanum Brush Script", serif;
     font-weight: 400;
     font-style: normal;
     font-size: 30px;
+  }
+
+  .alex-brush-regular {
+    font-family: "Alex Brush", cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 53px;
   }
 
   p br {
@@ -446,25 +460,33 @@
     background: url("../images/front_image.png") no-repeat center center;
     background-size: cover;
   }
+  .no-wrap {
+    white-space: nowrap;
+  }
 
   /* 이미지 위에 오버레이로 텍스트 배치 (가운데 정렬) */
   .header-overlay {
     position: absolute;
     top: 80%;
     left: 50%;
-    transform: translate(-50%, -100%);
+    transform: translate(-50%, -400%);
     text-align: center;
-    color: #fff;    /* 텍스트 색상 (필요시 조절) */
+    color: #ffd000;
+    text-shadow:
+      0.5px 0.5px 0 #938F8F,
+    -0.5px -0.5px 0 #938F8F,
+      0.5px -0.5px 0 #938F8F,
+    -0.5px 0.5px 0 #938F8F;         글씨 색상
   }
 
   /* 필요에 따라 글씨 크기 등 추가 조절 */
   .header-overlay h1 {
-    font-size: 1.5rem;
+    font-size: 1rem;
     margin-bottom: 10px;
   }
 
   .header-overlay p {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
 
   #footer-section {
