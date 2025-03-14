@@ -452,7 +452,7 @@
     position: absolute;
     top: 80%;
     left: 50%;
-    transform: translate(-50%, -150%);
+    transform: translate(-50%, -100%);
     text-align: center;
     color: #fff;    /* 텍스트 색상 (필요시 조절) */
   }

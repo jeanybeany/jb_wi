@@ -192,27 +192,14 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
   // 예식일시 설정 (wedding.html의 내용에 맞춤: 2025년 6월 14일 오후 1시)
-  const weddingDate = dayjs("2025-06-14T13:00:00");
+
   const receptionDate = dayjs("2025-05-31T13:00:00");
 
-  // 달력 영역 요소 확인 후 달력 생성
-  const weddingCalendarContainer = document.getElementById("weddingCalendar");
-  if (weddingCalendarContainer) {
-    const weeks = getweddingCalendarDataset(weddingDate);
-    renderweddingCalendar(weeks, weddingCalendarContainer, weddingDate);
-  }
   // 달력 영역 요소 확인 후 달력 생성
   const receptionCalendarContainer = document.getElementById("receptionCalendar");
   if (receptionCalendarContainer) {
     const weeks = getweddingCalendarDataset(receptionDate);
     renderweddingCalendar(weeks, receptionCalendarContainer, receptionDate);
-  }
-
-  // D-day 카운터 영역 요소 확인 후 즉시 갱신하고 1초마다 업데이트
-  const weddingdDayContainer = document.getElementById("weddingdDayCounter");
-  if (weddingdDayContainer) {
-    updateweddingDDayCounter(weddingDate);
-    setInterval(() => updateweddingDDayCounter(weddingDate), 1000);
   }
 
   // D-day 카운터 영역 요소 확인 후 즉시 갱신하고 1초마다 업데이트
@@ -260,40 +247,20 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // T맵 버튼 클릭 이벤트
-  document.getElementById("btnOpenTMap").addEventListener("click", function() {
-    // T맵 내비 URL (실제 URL로 수정)
-    window.open("tmap://route?rGoName=연세동문회관웨딩홀&rGoX=126.942441&rGoY=37.562772", "_blank");
-  });
-
-  // 카카오내비 버튼 클릭 이벤트
-  document.getElementById("btnOpenKakaoNavi").addEventListener("click", function() {
-    // 카카오내비 URL (실제 URL로 수정)
-    window.open("https://map.kakao.com/link/to/연세대학교동문회관예식장,37.562772,126.942441", "_blank");
-  });
-
-  // 네이버지도 버튼 클릭 이벤트
-  document.getElementById("btnOpenNaverMap").addEventListener("click", function() {
-    // 네이버 지도 URL (실제 URL로 수정)
-    window.open("nmap://route/car?dlat=37.562772&dlng=126.942441&dname=%EC%97%B0%EC%84%B8%EB%8F%99%EB%AC%B8%ED%9A%8C%EA%B4%80%EC%98%88%EC%8B%9D%EC%9E%A5", "_blank");
-  });
-
-  // T맵 버튼 클릭 이벤트
   document.getElementById("btnOpenTMapReception").addEventListener("click", function() {
-    // T맵 내비 URL (실제 URL로 수정)
     window.open("tmap://route?rGoName=에메랄드웨딩홀&rGoX=126.420667&rGoY=34.820348", "_blank");
   });
 
   // 카카오내비 버튼 클릭 이벤트
   document.getElementById("btnOpenKakaoNaviReception").addEventListener("click", function() {
-    // 카카오내비 URL (실제 URL로 수정)
     window.open("https://map.kakao.com/link/to/에메랄드웨딩홀,34.820348,126.420667", "_blank");
   });
 
   // 네이버지도 버튼 클릭 이벤트
   document.getElementById("btnOpenNaverMapReception").addEventListener("click", function() {
-    // 네이버 지도 URL (실제 URL로 수정)
     window.open("nmap://route/car?dlat=34.820348&dlng=126.420667&dname=%EC%97%90%EB%A9%94%EB%9E%84%EB%93%9C%EC%9B%A8%EB%94%A9%ED%99%80", "_blank");
   });
+
 
 
   /**
